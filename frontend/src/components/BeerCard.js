@@ -1,6 +1,6 @@
 import React from 'react';
 
-class BeerCard extends Component {
+class BeerCard extends React.Component {
     
     render() { 
         return ( 
@@ -8,14 +8,14 @@ class BeerCard extends Component {
                 <div className="ui column">
                     <div
                         className="ui card"
-                        key={props.beerInfo.id}
+                        key={this.props.beerInfo.id}
                     >
                         <div className="image">
-                        <img alt="oh no!" src={this.props.beerinfo.image} />
+                        {/* <img alt="oh no!" src={this.props.beerinfo.image} /> */}
                         </div>
                         <div className="content">
                         <div className="header">
-                            {this.props.beerInfo.name}
+                            Name: {this.props.beerInfo.name}
                         </div>
 
                         <div className="meta text-wrap">
@@ -26,14 +26,14 @@ class BeerCard extends Component {
                         </div>
                         <div className="extra content">
                         <span>
-                            {props.beerInfo.type}
+                            Type: {this.props.beerInfo.type}
                         </span>
-
+                        <br/>
                         <span>
-                            {props.beerInfo.brand}
+                            {this.props.beerInfo.brand}
                         </span>
                         <span>
-                            {props.beerInfo.abv}
+                            ABV: {this.props.beerInfo.abv}
                         </span>
                         </div>
                     </div>

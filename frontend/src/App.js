@@ -1,37 +1,50 @@
 import React from 'react';
 import './App.css';
+import BeerContainer from './containers/BeerContainer'
+
 
 class App extends React.Component {
+  
 
   constructor(){
     super()
     this.state = {
-      beerList: [],
+      beerList: [
+        {
+        name:"beerboi",
+        type:"IPA",
+        abv: "20%"
+      }
+    ],
       usersFavorites: [],
       showingSpecs: false,
-      beerToShow: {}
+      beerToShow: {},
+      page: 1
     }
   }
 
   showDetails = (beerInfo) => {
+    console.log(beerInfo)
 	  this.setState({
       ...this.state,
       showSpecs: true, 
-      beerToShow: botInfo
+      beerToShow: beerInfo
     })
   }
 
-  componentDidMount(){
-    fetch()
-    .then(res => res.json())
-    .then(data => this.setState({beerList: data
-    }))
-  }
+  // componentDidMount(){
+  //   fetch(`http://api.brewerydb.com/v2/beers/?key=ff38e26417e74fd8aa59902c71307936/?_limit=20&_page=${this.state.page}`)
+  //   .then(console.log)
+  //   .then(res => res.json())
+  //   .then(data => this.setState({beerList: data
+  //   }))
+  // }
 
   addBeerToFavorites = (beerInfo) => {
+    console.log(beerInfo)
     this.setState({
       ...this.state,
-      beerList: [...this.state.beerList, beerInfo]
+      usersFavorites: [...this.state.beerList, beerInfo]
     })
   }
 
@@ -41,7 +54,7 @@ class App extends React.Component {
     return (
       <div className="app">
         {/* <NavBar/> */}
-        <BeerContainer showDetails={this.showDetails}beerList={this.state.beerList} addBeerToFavorites={props.addBeerToFavorites}/>
+        <BeerContainer showDetails={this.showDetails}beerList={this.state.beerList} addBeerToFavorites={this.addBeerToFavorites}/>
         {/* <SideBar/> */}
       </div>
     );
