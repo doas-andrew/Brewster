@@ -9,3 +9,20 @@
 
 # only run this file once after migrating - this data should not change
 # require_relative './fetch_beers.rb'
+
+User.destroy_all
+Review.destroy_all
+Favorite.destroy_all
+
+# validate login with user_name -- display_name is for UI/UX purposes
+romy = User.create(user_name: 'romy', display_name: 'Rmaghsoudi', name: 'Romy Maghsoudi', password: '123')
+will = User.create(user_name: 'will', display_name: 'CodeJonesW', name: 'Williard Jones', password: '123')
+asa = User.create(user_name: 'asa', display_name: 'ASAllen67', name: 'Andrew Allen', password: '123')
+
+romy.favorites << [ Favorite.create(beer: Beer.all[0]), Favorite.create(beer: Beer.all[2]) ]
+will.favorites << [ Favorite.create(beer: Beer.all[0]), Favorite.create(beer: Beer.all[3]) ]
+asa.favorites  << [ Favorite.create(beer: Beer.all[1]), Favorite.create(beer: Beer.all[4]) ]
+
+asa.reviews  << [ Review.create(rating: 0, title: "Andrew's review", content: "This beer is garbo.", beer: Beer.all[0]) ]
+romy.reviews << [ Review.create(rating: 5, title: "Romy's review", content: "Don't listen to Andrew. This beer is GREAT.", beer: Beer.all[0]) ]
+will.reviews << [ Review.create(rating: 1, title: "Will's review", content: "Cures cancer but leaves a terrible after-taste. Not worth.", beer: Beer.all[5]) ]
