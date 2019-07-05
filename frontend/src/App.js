@@ -1,6 +1,7 @@
 import React from 'react';
 import './App.css';
 import BeerContainer from './containers/BeerContainer'
+import NavBar from './components/NavBar'
 
 
 class App extends React.Component {
@@ -11,7 +12,7 @@ class App extends React.Component {
     this.state = {
       beerList: [
         {
-        name:"beerboi",
+        name:"BeerBoi",
         type:"IPA",
         abv: "20%"
       }
@@ -53,7 +54,7 @@ class App extends React.Component {
   render(){
     return (
       <div className="app">
-        {/* <NavBar/> */}
+        <NavBar/>
         <BeerContainer showDetails={this.showDetails}beerList={this.state.beerList} addBeerToFavorites={this.addBeerToFavorites}/>
         {/* <SideBar/> */}
       </div>
