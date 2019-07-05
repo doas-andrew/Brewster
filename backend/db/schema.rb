@@ -16,13 +16,14 @@ ActiveRecord::Schema.define(version: 2019_07_05_160356) do
   enable_extension "plpgsql"
 
   create_table "beers", force: :cascade do |t|
-    t.string "api_id"
     t.string "name"
+    t.string "tagline"
     t.string "description"
-    t.string "img_url"
+    t.string "first_brewed"
+    t.string "image_url"
     t.float "abv"
-    t.boolean "isOrganic"
-    t.boolean "isRetired"
+    t.float "ibu"
+    t.float "ph"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
