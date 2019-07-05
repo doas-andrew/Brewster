@@ -1,5 +1,4 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 
 class App extends React.Component {
@@ -8,8 +7,18 @@ class App extends React.Component {
     super()
     this.state = {
       beerList: [],
-      usersFavorites: []
+      usersFavorites: [],
+      showingSpecs: false,
+      beerToShow: {}
     }
+  }
+
+  showDetails = (beerInfo) => {
+	  this.setState({
+      ...this.state,
+      showSpecs: true, 
+      beerToShow: botInfo
+    })
   }
 
   componentDidMount(){
@@ -32,7 +41,7 @@ class App extends React.Component {
     return (
       <div className="app">
         {/* <NavBar/> */}
-        <BeerContainer beerList={this.state.beerList} addBeerToFavorites={props.addBeerToFavorites}/>
+        <BeerContainer showDetails={this.showDetails}beerList={this.state.beerList} addBeerToFavorites={props.addBeerToFavorites}/>
         {/* <SideBar/> */}
       </div>
     );

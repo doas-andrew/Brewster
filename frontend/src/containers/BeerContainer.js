@@ -6,7 +6,7 @@ class BeerContainer extends React.Component {
         return(
             <div id="BeerContainer" className="ui four column grid">
                 <div className="row">
-                    {this.props.beerlist.map((beer, idx) => <BeerCard key={idx} beerInfo={beer} addBeerToFavorites={this.props.addBeerToFavorites}/>)}
+                    {this.props.beerlist.map((beer, idx) => <BeerCard key={idx} beerInfo={beer} addBeerToFavorites={this.props.addBeerToFavorites} showDetails={this.props.showDetails}/>)}
                 </div>
             </div>
         )
