@@ -50,8 +50,8 @@ ActiveRecord::Schema.define(version: 2019_07_05_160356) do
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "user_name"
-    t.string "display_name"
+    t.string "username"
+    t.string "login_name"
     t.string "name"
     t.string "password"
     t.datetime "created_at", null: false

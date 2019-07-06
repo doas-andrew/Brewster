@@ -5,7 +5,6 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-# User.destroy_all
 
 # only run this file once after migrating - this data should not change
 # require_relative './fetch_beers.rb'
@@ -14,10 +13,10 @@ User.destroy_all
 Review.destroy_all
 Favorite.destroy_all
 
-# validate login with user_name -- display_name is for UI/UX purposes
-romy = User.create(user_name: 'romy', display_name: 'Rmaghsoudi', name: 'Romy Maghsoudi', password: '123')
-will = User.create(user_name: 'will', display_name: 'CodeJonesW', name: 'Williard Jones', password: '123')
-asa = User.create(user_name: 'asa', display_name: 'ASAllen67', name: 'Andrew Allen', password: '123')
+# validate login with login_name -- username is for UI/UX purposes
+romy = User.create(username: 'Romy', name: 'Romy Maghsoudi', password: '123')
+will = User.create(username: 'Will', name: 'Williard Jones', password: '123')
+asa = User.create(username: 'ASA', name: 'Andrew Allen', password: '123')
 
 romy.favorites << [ Favorite.create(beer: Beer.all[0]), Favorite.create(beer: Beer.all[2]) ]
 will.favorites << [ Favorite.create(beer: Beer.all[0]), Favorite.create(beer: Beer.all[3]) ]
