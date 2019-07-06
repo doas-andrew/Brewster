@@ -1,3 +1,9 @@
+body {
+  background-image: url('./home2.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
 .App {
   text-align: center;
 }
@@ -31,3 +37,44 @@
     transform: rotate(360deg);
   }
 }
+
+.card {
+  width: 20em;
+}
+
+.error {
+  margin: 0 0 0 1em;
+  color: rgb(234, 146, 19);
+  font-size: 1.2em;
+}
+
+#sign-up .error {
+  text-align: left;
+}
+
+div .login-signup {
+  background-color: rgb(58, 71, 80);
+  width: 30em;
+  margin: 10em auto 0 auto;
+}
+
+.login-signup form input {
+  outline: none;
+  font-size: 1.10em;
+  padding-left: .40em;
+  border-radius: 0.50em;
+}
+
+.login-signup button {
+  width: 10em;
+}
+
+.login-signup img {
+  margin: 0 -2em 1em -2em;
+}
+
+
+
+
+
+
