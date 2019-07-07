@@ -10,6 +10,15 @@ class UsersController < ApplicationController
 		end
 	end
 
+	def profile
+		@user = User.find(params[:id])
+		if @user
+			render json: @user.profile_info
+		else
+			render json: {}, status: :not_found
+		end
+	end
+
 	private
 	def user_params
 		params.require(:user).permit(:name, :username, :password)

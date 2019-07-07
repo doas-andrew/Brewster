@@ -3,6 +3,8 @@ import { Navbar, Nav, Button, Form, FormControl } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaAngleLeft, FaBeer, FaAngleRight, FaSearch } from 'react-icons/fa';
 
+const user_id = localStorage.getItem('brewster_id')
+
 const RenderNavbar = (props)=> {
   return (
     <Navbar bg="dark" variant="dark" style={{ fontSize: '1.2em' }}>
@@ -13,7 +15,11 @@ const RenderNavbar = (props)=> {
         <span>&nbsp; &nbsp; &nbsp;</span>
         {
           props.loggedIn ?
-            <Nav.Link onClick={props.changeLoggedIn}>Logout</Nav.Link>
+            <Fragment>
+              <LinkContainer to={'/profile/'+user_id}><Nav.Link>Profile</Nav.Link></LinkContainer>
+              <span>&nbsp; &nbsp; &nbsp;</span>
+              <Nav.Link onClick={props.changeLoggedIn}>Logout</Nav.Link>
+            </Fragment>
             :
             <Fragment>
               <LinkContainer to='/login'><Nav.Link>Login</Nav.Link></LinkContainer>
