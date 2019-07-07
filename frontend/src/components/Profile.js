@@ -1,5 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import { Redirect } from 'react-router-dom';
+
+import ReviewsContainer from './ReviewsContainer'
 import BeerShelf from './BeerShelf'
 
 import { Card, Button } from 'react-bootstrap'
@@ -9,7 +11,7 @@ import '../stylesheets/Profile.css'
 
 class Profile extends Component {
 	state = { 
-		userProfile: {},
+		user: {},
 		redirect: null
 	}
 
@@ -23,12 +25,12 @@ class Profile extends Component {
 			if(res.error)
 				this.setState({ redirect: <Redirect to="/404" /> })
 			else
-				this.setState({ userProfile: res })
+				this.setState({ user: res })
 		})
 	}
 
 	renderProfileButtons = ()=> {
-		if(this.user_id === this.state.userProfile.id)
+		if(this.user_id === this.state.user.id)
 			return (
 				<Fragment>
 		  		<Button variant="secondary">Edit your Favorites &nbsp; <FaBeer/></Button>
@@ -46,36 +48,32 @@ class Profile extends Component {
 	}
 
 	render() {
-		console.log(this.state.userProfile)
-		if(!this.state.userProfile.id)
+		console.log(this.state.user)
+		if(this.state.user.id === undefined)
 			return null
 
 		return (
-			<div className="page">
-			{this.state.redirect}
+			<div id="profile" className="page">
+				{this.state.redirect}
 
-		  	<div className="row" style={{ marginTop: '6em' }}>
+		  	<div className="row" style={{ margin: '6em 1em 3em 0' }}>
+
 			  	<div id="user-card" className="col-4">
 			  		<div id="avatar-container" style={{ backgroundColor: 'red'}}>
-				  		{ this.user_id === this.state.userProfile.id ? <span onClick={console.log} id="edit-profile-btn"><FaCogs/></span> : null }
+				  		{ this.user_id === this.state.user.id ? <span onClick={console.log} id="edit-profile-btn"><FaCogs/></span> : null }
 				  		<img src={require('../images/default_avatar.jpg')} alt="avatar" />
 				  	</div>
 				  	{this.renderProfileButtons()}
 			  	</div>
 
-			  	<div className="col">
-			  		idk
-			  		<div style={{overflow: 'auto', height: '50vh'}}>
-				  		<div id="favorites">
-				  			div
-				  		</div>
-			  		</div>
-			  	</div>
+			  	<div className="col" style={{ backgroundColor: '' }}>
+			  		<h3>Reviews by {this.state.user.name}</h3>
+			  		<ReviewsContainer reviews={this.state.user.reviews} />
+					</div>
 				</div>
 
-				<h3>{this.state.userProfile.username}'s Favorites</h3>
-				<BeerShelf beers={this.state.userProfile.favorite_beers} />
-
+				<h3>{this.state.user.username}'s Favorites</h3>
+				<BeerShelf beers={this.state.user.favorite_beers} />
 			</div>
 		)
 	}

@@ -1,19 +1,21 @@
 .beer-shelf {
+  border: 2px solid black;
 	height: 400px;
   /*overflow-y: scroll;*/
 }
 
-.hs {
+.scroll-grid {
 	height: 100%;
   display: grid;
-  grid-template-columns: repeat(30, 17em);
+  grid-template-columns: repeat(50, 15em);
   overflow-x: scroll;
 
-  list-style: none;
   background-image: url('../images/shelf2.png');
 }
 
 .item {
-  width: 5em;
-  margin: 1.20em;
+  margin-bottom: 4em;
+  background-size: 5em;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }

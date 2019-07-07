@@ -1,0 +1,20 @@
+#reviews-container {
+	border: 2px solid black;
+	height: 22.2em;
+	width: 100%;
+	overflow: auto;
+}
+
+.review-card {
+	margin: 1.50em;
+	padding-top: 0.50em;
+}
+
+.scroll-grid {
+	height: 100%;
+  display: grid;
+  grid-template-columns: repeat(50, 15em);
+  overflow-x: scroll;
+
+  background-image: url('../images/shelf2.png');
+}
