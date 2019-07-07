@@ -10,8 +10,8 @@ gem 'rest-client'
 # used to specify allowed origins for CORS 
 gem 'rack-cors'
 
-# password encryption
-gem 'rsa'
+# generates tokens
+gem 'jwt'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

@@ -9,24 +9,20 @@ class Login extends Component {
 		e.preventDefault()
 
 		if(e.target.login_name.value && e.target.password.value) {
-			let login = {
-				login_name: e.target.login_name.value.toLowerCase(),
-				password: e.target.password.value
-			}
-
 			fetch('http://localhost:3000/login',{
 		    method: 'POST',
 		    headers: { Accept: 'application/json', 'Content-Type':'application/json' },
-		    body: JSON.stringify( login )
+		    body: JSON.stringify({
+					login_name: e.target.login_name.value.toLowerCase(),
+					password: e.target.password.value
+		    })
 		  })
 		  .then(res => res.json())
 		  .then(res => {
-
-		  	console.log(res)
-
 		  	if(res.token) {
-		  		// localStorage.setItem('token', res.token)
-          this.props.history.push("/profile");
+		  		localStorage.setItem('brewster_token', res.token)
+          window.history.pushState({url: "/profile"},"", "/profile")
+          this.props.changeLoggedIn()
 		  	}
 		  	else if(res.errors)
 		  		this.setState({ errors: res.errors })
@@ -59,5 +55,4 @@ class Login extends Component {
 		)
 	}
 }
-
 export default Login
