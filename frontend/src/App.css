@@ -1,5 +1,91 @@
+body {
+  background-image: url('../images/home2.jpeg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
 
-.ui card {
-  padding: 20px;
-  margin: 20px;
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.card {
+  width: 20em;
+}
+
+.error {
+  margin: 0 0 0 1em;
+  color: rgb(234, 146, 19);
+  font-size: 1.2em;
+}
+
+#sign-up .error {
+  text-align: left;
+}
+
+div .login-signup {
+  background-color: rgb(58, 71, 80);
+  width: 30em;
+  margin: 10em auto 0 auto;
+}
+
+.login-signup form input {
+  outline: none;
+  font-size: 1.10em;
+  padding-left: .40em;
+  border-radius: 0.50em;
+}
+
+.login-signup button {
+  width: 10em;
+}
+
+.login-signup img {
+  margin: 0 -2em 1em -2em;
+}
+
+#nav-logo {
+  color: white;
+  cursor: pointer;
+}
+
+.page {
+  z-index: -1;
+  position:absolute;
+  left:0;
+  right:0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  width: 70%;
+  background: white;
 }
