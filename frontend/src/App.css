@@ -73,6 +73,10 @@ div .login-signup {
   margin: 0 -2em 1em -2em;
 }
 
+#nav-logo {
+  color: white;
+  cursor: pointer;
+}
 
 
 
