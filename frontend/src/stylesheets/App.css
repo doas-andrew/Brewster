@@ -1,5 +1,5 @@
 body {
-  background-image: url('./home2.jpeg');
+  background-image: url('../images/home2.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
 }
@@ -77,6 +77,53 @@ div .login-signup {
   color: white;
   cursor: pointer;
 }
+
+.page {
+  z-index: -1;
+  position:absolute;
+  left:0;
+  right:0;
+  bottom: 0;
+  top: 0;
+  margin: auto;
+  width: 70%;
+  background: white;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

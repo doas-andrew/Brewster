@@ -46,7 +46,7 @@ class SignUp extends Component {
 			<div id="sign-up">
 				<Card className="login-signup">
 				  <Card.Body>
-				  	<Card.Img variant="top" src={require('../brewster_banner.png')}></Card.Img>
+				  	<Card.Img variant="top" src={require('../images/brewster_banner.png')}></Card.Img>
 				  	{this.state.errors.length ? this.showErrors() : null}
 				  	<br/>
 						<form onSubmit={this.handleSignUp}>

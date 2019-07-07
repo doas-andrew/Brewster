@@ -28,4 +28,14 @@ class User < ApplicationRecord
   def authenticate(password)
     RSA_Keys::decrypt(self.password) == password
   end
+
+  def profile_info
+    {
+      id: self.id.to_s,
+      name: self.name,
+      username: self.username,
+      favorite_beers: self.beers,
+      reviews: self.reviews
+    }
+  end
 end

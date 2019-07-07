@@ -21,8 +21,10 @@ class Login extends Component {
 		  .then(res => {
 		  	if(res.token) {
 		  		localStorage.setItem('brewster_token', res.token)
-          window.history.pushState({url: "/profile"},"", "/profile")
-          this.props.changeLoggedIn()
+		  		localStorage.setItem('brewster_id', res.user_id)
+          window.history.pushState({url: "/profile/"+localStorage.getItem('brewster_id')},"", "/profile/"+localStorage.getItem('brewster_id'))
+          this.forceUpdate()
+          // this.props.changeLoggedIn()
 		  	}
 		  	else if(res.errors)
 		  		this.setState({ errors: res.errors })
@@ -38,7 +40,7 @@ class Login extends Component {
 			<div id="login">
 				<Card className="login-signup">
 				  <Card.Body>
-				  	<Card.Img variant="top" src={require('../brewster_banner.png')}></Card.Img>
+				  	<Card.Img variant="top" src={require('../images/brewster_banner.png')}></Card.Img>
 				  	{this.state.errors.length ? this.showErrors() : null}
 				  	<br/>
 						<form onSubmit={this.handleLogin}>
