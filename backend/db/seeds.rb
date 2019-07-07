@@ -19,7 +19,7 @@ will = User.create(username: 'Will', name: 'Williard Jones', password: '123')
 asa = User.create(username: 'ASA', name: 'Andrew Allen', password: '123')
 
 romy.favorites << [ Favorite.create(beer: Beer.all[0]), Favorite.create(beer: Beer.all[2]) ]
-will.favorites << [ Favorite.create(beer: Beer.all[0]), Favorite.create(beer: Beer.all[3]) ]
+Beer.all.each {|beer| will.favorites << Favorite.create(beer: beer) }
 asa.favorites  << [ Favorite.create(beer: Beer.all[1]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4])  ]
 
 asa.reviews  << [ Review.create(rating: 0, title: "Andrew's review", content: "This beer is garbo.", beer: Beer.all[0]) ]

@@ -3,7 +3,9 @@ import '../stylesheets/BeerShelf.css';
 
 class BeerShelf extends Component {
 
-	renderBeers = ()=> this.props.beers.map( beer => <li key={beer.id}><img className="item" onClick={ e => this.showBeerInfo(beer) } draggable="false" src={beer.image_url} alt="beer"/></li> )
+	renderBeers = ()=> this.props.beers.map( beer => 
+		<div className="item" onClick={ e => this.showBeerInfo(beer) } style={{ backgroundImage: `url(${beer.image_url})` }} ></div>
+	)
 
 	showBeerInfo = (beer)=> {
 		// modal popup?
@@ -13,9 +15,9 @@ class BeerShelf extends Component {
 	render() {
 		return (
 			<div className="beer-shelf">
-		  	<ul className="hs full">
+		  	<div className="scroll-grid">
 		  		{this.renderBeers()}
-		  	</ul>
+		  	</div>
 			</div>
 		)
 	}
