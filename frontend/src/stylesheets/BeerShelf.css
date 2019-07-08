@@ -11,6 +11,12 @@
   font-style: 'Arial';
 }
 
+#showAllButton {
+  position: absolute;
+  top: 7em;
+  left: 4em;
+}
+
 .beer-scroll-grid {
   height: 100%;
   display: grid;

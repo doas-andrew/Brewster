@@ -8,7 +8,9 @@ class Home extends Component {
 
 	state = {
 		loggedIn: !!localStorage.getItem('brewster_token'),
-		topBeers: []
+		topBeers: [],
+		showAll: false,
+		allBeers: []
 	}
 
 	componentDidMount() {
@@ -17,14 +19,35 @@ class Home extends Component {
 		.then(res => this.setState({ topBeers: res }))
 	}
 
-	getContent = ()=> {
-		if(this.state.loggedIn)
+	fetchAllBeers = () => {
+		fetch('http://localhost:3000/beers')
+		.then(res => res.json())
+		.then(res => this.setState({ allBeers: res }))
+	}
+
+	getContent = () => {
+		if (this.state.loggedIn)
 			return <div style={{ margin: '6em auto', width: '50em' }}><BeerShelf title="Top 5 Craft Beers!" beers={this.state.topBeers} /></div>
 		else
 			return this.splash()
 	}
 
-	splash = ()=> (
+	getAllContent = () => {
+		if (this.state.loggedIn)
+			return <div style={{ margin: '6em auto', width: '50em' }}><BeerShelf title="All Craft Beers!" beers={this.state.allBeers} /></div>
+		else
+			return this.splash()
+	}
+
+	showAll = () => {
+		this.setState({
+			showAll: true
+		})
+		this.fetchAllBeers()
+		this.getContent()
+	}
+
+	splash = () => (
 		<Card style={{ width: '30em', margin: '10em auto 0 auto' }}>
 			<Card.Img variant="top" style={{ margin: 'auto', width: '20em', height: '20em' }} src={require('../images/brewster.png')} />
 		  	<Card.Body>
@@ -42,7 +65,8 @@ class Home extends Component {
 	render() {
 		return (
 			<div id="home">
-				{ this.getContent() }
+				<button id="showAllButton" onClick={this.showAll}>Show All Beers</button>
+				{this.state.showAll ? this.getAllContent() : this.getContent() }
 			</div>
 		)
 	}
