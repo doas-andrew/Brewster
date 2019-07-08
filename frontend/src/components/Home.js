@@ -41,7 +41,7 @@ class Home extends Component {
 
 	showAll = () => {
 		this.setState({
-			showAll: true
+			showAll: !this.state.showAll
 		})
 		this.fetchAllBeers()
 		this.getContent()
@@ -65,7 +65,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div id="home">
-				<button id="showAllButton" onClick={this.showAll}>Show All Beers</button>
+				<button id="showAllButton" onClick={this.showAll}> {!this.state.showAll ? "Show All Beers" : "Show Top 5"}</button>
 				{this.state.showAll ? this.getAllContent() : this.getContent() }
 			</div>
 		)
