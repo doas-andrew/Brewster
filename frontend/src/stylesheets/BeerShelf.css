@@ -1,6 +1,8 @@
 .beer-shelf {
 	height: 420px;
   background-color: white;
+  opacity: 0.9;
+
   /*overflow-y: scroll;*/
 }
 
