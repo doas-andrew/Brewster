@@ -22,9 +22,8 @@ class Login extends Component {
 		  	if(res.token) {
 		  		localStorage.setItem('brewster_token', res.token)
 		  		localStorage.setItem('brewster_id', res.user_id)
-          window.history.pushState({url: "/profile/"+localStorage.getItem('brewster_id')},"", "/profile/"+localStorage.getItem('brewster_id'))
+          window.history.pushState({url: "/"},"", "/")
           this.forceUpdate()
-          // this.props.changeLoggedIn()
 		  	}
 		  	else if(res.errors)
 		  		this.setState({ errors: res.errors })

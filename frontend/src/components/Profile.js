@@ -72,8 +72,7 @@ class Profile extends Component {
 					</div>
 				</div>
 
-				<h3>{this.state.user.username}'s Favorites</h3>
-				<BeerShelf beers={this.state.user.favorite_beers} />
+				<BeerShelf beers={this.state.user.favorite_beers} title={this.state.user.username+"'s Favorites"} />
 			</div>
 		)
 	}

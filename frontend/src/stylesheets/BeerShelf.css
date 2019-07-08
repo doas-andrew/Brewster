@@ -1,21 +1,35 @@
 .beer-shelf {
-  border: 2px solid black;
-	height: 400px;
+	height: 420px;
+  background-color: white;
   /*overflow-y: scroll;*/
 }
 
-.scroll-grid {
-	height: 100%;
+.beer-shelf h3 {
+  margin-top: 0.50em;
+  /*margin-left: 1em;*/
+  text-align: center;
+  font-style: 'Arial';
+}
+
+.beer-scroll-grid {
+  height: 100%;
   display: grid;
   grid-template-columns: repeat(50, 15em);
   overflow-x: scroll;
 
-  background-image: url('../images/shelf2.png');
+  background: url('../images/shelf2.png') no-repeat;
+/*  background-size: 100%;*/
 }
 
 .item {
   margin-bottom: 4em;
-  background-size: 5em;
+  background-size: 4em;
   background-repeat: no-repeat;
   background-position: bottom;
+}
+
+.beer-info {
+  /*width: 5em;*/
+  /*border: 2px solid black;*/
+  /*background: red;*/
 }
