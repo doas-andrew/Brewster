@@ -1,5 +1,6 @@
 #user-card{
-  margin-top: 3em;
+  margin: 0 3em 0 1em;
+  /*background-color: red;*/
 }
 #user-card button {
   margin: auto;

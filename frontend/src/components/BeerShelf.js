@@ -1,22 +1,57 @@
 import React, { Component } from 'react'
 import '../stylesheets/BeerShelf.css';
+import BeerSpecs from './BeerSpecs'
 
 class BeerShelf extends Component {
 
-	renderBeers = ()=> this.props.beers.map( beer => <li key={beer.id}><img className="item" onClick={ e => this.showBeerInfo(beer) } draggable="false" src={beer.image_url} alt="beer"/></li> )
+	state = {
+		showBeer: false,
+		title: this.props.title
+	}
 
-	showBeerInfo = (beer)=> {
-		// modal popup?
-		console.log(beer)
+	changeShowBeer = (beer)=> {
+		this.setState({ showBeer: beer, title: this.checkBeerName(beer.name) })
+	}
+
+	renderBeers = ()=> {
+		return (
+			<div className="beer-scroll-grid">
+				{this.props.beers.map( beer =>
+					<div className="item" onClick={ e => this.changeShowBeer(beer) } style={{ backgroundImage: `url(${beer.image_url})` }} >
+						<div className="beer-info">
+							<h5>{this.checkBeerName(beer.name)}</h5>
+						</div>
+					</div>
+				)}
+			</div>
+		)
+	}
+
+	checkBeerName = (string)=> {
+		if(string.includes('('))
+			string = string.slice(0, string.indexOf('('))
+		return string
+	}
+
+	closeBeerSpecs = ()=> {
+		this.setState({
+			showBeer: false,
+			title: this.props.title
+		})
 	}
 
 	render() {
 		return (
 			<div className="beer-shelf">
-		  	<ul className="hs full">
-		  		{this.renderBeers()}
-		  	</ul>
-			</div>
+				<h3>{this.state.title}</h3>
+				<hr/>
+				{
+					this.state.showBeer ? 
+						<BeerSpecs closeBeerSpecs={this.closeBeerSpecs} beer={this.state.showBeer} />
+						:
+						this.renderBeers()
+				}
+		  </div>
 		)
 	}
 }
