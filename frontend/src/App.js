@@ -20,7 +20,7 @@ class App extends Component {
 	}
 
 	changeLoggedIn = ()=> {
-		if(this.state.loggedIn) {
+		if (this.state.loggedIn) {
 			window.history.pushState({url: "/"},"", "/")
 			localStorage.removeItem('brewster_token')
 			localStorage.removeItem('brewster_id')

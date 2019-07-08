@@ -8,23 +8,18 @@ class Home extends Component {
 
 	state = {
 		loggedIn: !!localStorage.getItem('brewster_token'),
-		topBeers: []
+		showAll: false,
+		allBeers: [],
+		title: "All Beers"
 	}
 
 	componentDidMount() {
-		fetch('http://localhost:3000/beers/top-beers')
+		fetch('http://localhost:3000/beers')
 		.then(res => res.json())
-		.then(res => this.setState({ topBeers: res }))
+		.then(res => this.setState({ allBeers: res }))
 	}
 
-	getContent = ()=> {
-		if(this.state.loggedIn)
-			return <div style={{ margin: '6em auto', width: '50em' }}><BeerShelf title="Top 5 Craft Beers!" beers={this.state.topBeers} /></div>
-		else
-			return this.splash()
-	}
-
-	splash = ()=> (
+	splash = () => (
 		<Card style={{ width: '30em', margin: '10em auto 0 auto' }}>
 			<Card.Img variant="top" style={{ margin: 'auto', width: '20em', height: '20em' }} src={require('../images/brewster.png')} />
 		  	<Card.Body>
@@ -42,7 +37,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div id="home">
-				{ this.getContent() }
+				<div style={{ margin: '6em auto', width: '50em' }}><BeerShelf handleToggle={this.handleToggle} title={this.state.title} beers={this.state.allBeers} /></div>
 			</div>
 		)
 	}
