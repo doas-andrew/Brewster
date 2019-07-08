@@ -10,11 +10,9 @@
 	padding-top: 0.50em;
 }
 
-.scroll-grid {
+.review-grid {
 	height: 100%;
   display: grid;
   grid-template-columns: repeat(50, 15em);
   overflow-x: scroll;
-
-  background-image: url('../images/shelf2.png');
 }

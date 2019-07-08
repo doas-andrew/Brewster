@@ -53,7 +53,7 @@ class Profile extends Component {
 			return null
 
 		return (
-			<div id="profile" className="page">
+			<div className="profile" className="page">
 				{this.state.redirect}
 
 		  	<div className="row" style={{ margin: '6em 1em 3em 0' }}>
@@ -72,8 +72,7 @@ class Profile extends Component {
 					</div>
 				</div>
 
-				<h3>{this.state.user.username}'s Favorites</h3>
-				<BeerShelf beers={this.state.user.favorite_beers} />
+				<BeerShelf beers={this.state.user.favorite_beers} title={this.state.user.username+"'s Favorites"} />
 			</div>
 		)
 	}
