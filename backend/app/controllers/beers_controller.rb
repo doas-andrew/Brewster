@@ -1,15 +1,15 @@
 class BeersController < ApplicationController
 
 	def index
-		render json: Beer.all
+		render json: Beer.all, each_serializer: BeerSerializer
 	end
 
 	def show
-		render json: Beer.find(params[:id])
+		render json: Beer.find(params[:id]), each_serializer: BeerSerializer
 	end
 
 	def top_beers
-		render json: Beer.top_beers
+		render json: Beer.top_beers, each_serializer: BeerSerializer
 	end
 
 	def beer_reviews
