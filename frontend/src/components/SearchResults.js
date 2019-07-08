@@ -9,7 +9,8 @@ class SearchResults extends Component {
 	}
 	render() {
 		return (
-			<div id="page">
+			<div className="page">
+			
 			</div>
 		)
 	}

@@ -53,7 +53,7 @@ class Profile extends Component {
 			return null
 
 		return (
-			<div id="profile" className="page">
+			<div className="profile" className="page">
 				{this.state.redirect}
 
 		  	<div className="row" style={{ margin: '6em 1em 3em 0' }}>
