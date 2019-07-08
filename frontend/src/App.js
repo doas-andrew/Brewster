@@ -36,8 +36,8 @@ class App extends Component {
 
 	render() {
 	  return (
-	    <div className="App">
-	    	<Router>
+    	<Router>
+	    	<div className="App">
 	      	<RenderNavbar loggedIn={this.state.loggedIn} changeLoggedIn={this.changeLoggedIn} handleSearch={this.handleSearch} />
 
     			<Switch>
@@ -49,8 +49,8 @@ class App extends Component {
 	          <Route exact path="/sign-up" render={()=> this.state.loggedIn ? <Redirect to='/'/> : <SignUp changeLoggedIn={this.changeLoggedIn} />} />
 	          <Route component={NotFound} />
 	      	</Switch>
-  			</Router>
-	    </div>
+      	</div>
+			</Router>
 	  );
 	}
 }

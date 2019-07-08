@@ -3,6 +3,8 @@ Rails.application.routes.draw do
   
   get 'beers/top-beers', to: 'beers#top_beers'
   get '/users/profile/:id', to: "users#profile"
+  get '/beers/specs/:id', to: 'beers#beer_specs_stats'
+  get '/beers/reviews/:id', to: 'beers#beer_reviews'
   
   resources :beers, only: [:index, :show]
   resources :favorites

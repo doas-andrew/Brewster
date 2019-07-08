@@ -1,15 +1,31 @@
 import React, { Component } from 'react'
 import '../stylesheets/BeerShelf.css';
+import BeerSpecs from './BeerSpecs'
 
 class BeerShelf extends Component {
 
-	renderBeers = ()=> this.props.beers.map( beer => 
-		<div className="item" onClick={ e => this.showBeerInfo(beer) } style={{ backgroundImage: `url(${beer.image_url})` }} >
-			<div className="beer-info">
-				<h5>{this.checkBeerName(beer.name)}</h5>
+	state = {
+		showBeer: false,
+		title: this.props.title
+	}
+
+	changeShowBeer = (beer)=> {
+		this.setState({ showBeer: beer, title: this.checkBeerName(beer.name) })
+	}
+
+	renderBeers = ()=> {
+		return (
+			<div className="beer-scroll-grid">
+				{this.props.beers.map( beer =>
+					<div className="item" onClick={ e => this.changeShowBeer(beer) } style={{ backgroundImage: `url(${beer.image_url})` }} >
+						<div className="beer-info">
+							<h5>{this.checkBeerName(beer.name)}</h5>
+						</div>
+					</div>
+				)}
 			</div>
-		</div>
-	)
+		)
+	}
 
 	checkBeerName = (string)=> {
 		if(string.includes('('))
@@ -17,19 +33,24 @@ class BeerShelf extends Component {
 		return string
 	}
 
-	showBeerInfo = (beer)=> {
-		// modal popup?
-		console.log(beer)
+	closeBeerSpecs = ()=> {
+		this.setState({
+			showBeer: false,
+			title: this.props.title
+		})
 	}
 
 	render() {
 		return (
 			<div className="beer-shelf">
-				<h3>{this.props.title}</h3>
+				<h3>{this.state.title}</h3>
 				<hr/>
-		  	<div className="beer-scroll-grid">
-		  		{this.renderBeers()}
-		  	</div>
+				{
+					this.state.showBeer ? 
+						<BeerSpecs closeBeerSpecs={this.closeBeerSpecs} beer={this.state.showBeer} />
+						:
+						this.renderBeers()
+				}
 		  </div>
 		)
 	}

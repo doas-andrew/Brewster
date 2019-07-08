@@ -6,7 +6,8 @@
 }
 
 .review-card {
-	margin: 1.50em;
+	width: 80%;
+	margin: 1em auto;
 	padding-top: 0.50em;
 }
 
