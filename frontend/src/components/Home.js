@@ -8,44 +8,36 @@ class Home extends Component {
 
 	state = {
 		loggedIn: !!localStorage.getItem('brewster_token'),
-		topBeers: [],
 		showAll: false,
-		allBeers: []
+		allBeers: [],
+		title: "All Beers"
 	}
 
 	componentDidMount() {
-		fetch('http://localhost:3000/beers/top-beers')
-		.then(res => res.json())
-		.then(res => this.setState({ topBeers: res }))
-	}
-
-	fetchAllBeers = () => {
 		fetch('http://localhost:3000/beers')
 		.then(res => res.json())
 		.then(res => this.setState({ allBeers: res }))
 	}
 
-	getContent = () => {
-		if (this.state.loggedIn)
-			return <div style={{ margin: '6em auto', width: '50em' }}><BeerShelf title="Top 5 Craft Beers!" beers={this.state.topBeers} /></div>
-		else
-			return this.splash()
-	}
+	// getContent = () => {
+	// 	if (this.state.loggedIn)
+	// 		return <div style={{ margin: '6em auto', width: '50em' }}><BeerShelf handleToggle={this.handleToggle} title={this.state.title} beers={this.state.topBeers} /></div>
+	// 	else
+	// 		return this.splash()
+	// }
 
-	getAllContent = () => {
-		if (this.state.loggedIn)
-			return <div style={{ margin: '6em auto', width: '50em' }}><BeerShelf title="All Craft Beers!" beers={this.state.allBeers} /></div>
-		else
-			return this.splash()
-	}
+	// getAllContent = () => {
+	// 	if (this.state.loggedIn)
+	// 		return <div style={{ margin: '6em auto', width: '50em' }}><BeerShelf handleToggle={this.handleToggle} title={this.state.title} beers={this.state.allBeers} /></div>
+	// 	else
+	// 		return this.splash()
+	// }
 
-	showAll = () => {
-		this.setState({
-			showAll: !this.state.showAll
-		})
-		this.fetchAllBeers()
-		this.getContent()
-	}
+	// showAll = () => {
+	// 	this.setState({
+	// 		showAll: !this.state.showAll
+	// 	})
+	// }
 
 	splash = () => (
 		<Card style={{ width: '30em', margin: '10em auto 0 auto' }}>
@@ -65,8 +57,7 @@ class Home extends Component {
 	render() {
 		return (
 			<div id="home">
-				<button id="showAllButton" onClick={this.showAll}> {!this.state.showAll ? "Show All Beers" : "Show Top 5"}</button>
-				{this.state.showAll ? this.getAllContent() : this.getContent() }
+				<div style={{ margin: '6em auto', width: '50em' }}><BeerShelf handleToggle={this.handleToggle} title={this.state.title} beers={this.state.allBeers} /></div>
 			</div>
 		)
 	}
