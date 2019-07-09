@@ -3,6 +3,7 @@
 	height: 22.2em;
 	width: 100%;
 	overflow: auto;
+	border-radius: 16px;
 }
 
 .review-card {

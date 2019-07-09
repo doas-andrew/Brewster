@@ -9,9 +9,9 @@ const AboutUs = ()=> {
 			  <Card.Body>
 			    <Card.Title><h1>About Us</h1></Card.Title>
 			    <Card.Text style={{textAlign: 'left', margin: '1em'}}>
-			    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+					Brewster is an application for finding new beers, seeing each beer's detailed information, and keeping track of all your favorites! Users can leave reviews on each beer so that others can make good decisions about which beers to try and share opinions! We have designed this application with React, a Javascript framework, a Ruby on Rails backend, and finally HTML and CSS.
 			    	<br/><br/>
-			    	Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+			    	Designed by: Andrew Allen, Romy Maghsoudi, and Will Jones. 
 			    </Card.Text>
 			  </Card.Body>
 			</Card>
