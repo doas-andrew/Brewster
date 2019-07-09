@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # only run this file once after migrating - this data should not change
-# require_relative './fetch_beers.rb'
+require_relative './fetch_beers.rb'
 
 User.destroy_all
 Review.destroy_all
