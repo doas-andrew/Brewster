@@ -15,7 +15,7 @@ class BeerSpecs extends Component {
 	}
 
 	render() {
-		console.log(this.props.beer)
+		console.log(this.props.beer.favorites)
 		return (
 			<div id="showBeer">
 				<span id="close-showBeer" onClick={this.props.closeBeerSpecs}><FaChevronCircleLeft /></span>
@@ -26,7 +26,7 @@ class BeerSpecs extends Component {
 						<strong>Bitterness (IBU):</strong><br/>
 						<strong>Acidity (Ph):</strong><br/>
 						<br/>
-						<span><FaHeart/> {this.state.faves} &nbsp; &nbsp; <FaEdit/> {this.state.revs}</span>
+						<span><FaHeart/> {this.props.faves} &nbsp; &nbsp; <FaEdit/> {this.state.revs}</span>
 					</div>
 
 					<div className="col">

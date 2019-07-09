@@ -46,7 +46,7 @@ class BeerShelf extends Component {
 	render() {
 		return (
 			<div className="beer-shelf">
-				<h3>{this.props.title}</h3>
+				<h3>{this.state.title}</h3>
 				<hr/>
 				{
 					this.state.showBeer ? 
