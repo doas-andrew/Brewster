@@ -1,9 +1,13 @@
 import React, { Component } from 'react'
+import { Redirect } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
 
 class Login extends Component {
 
-	state = { errors: [] }
+	state = {
+		errors: [],
+		redirect: null
+	}
 
 	handleLogin = e => {
 		e.preventDefault()
@@ -22,8 +26,8 @@ class Login extends Component {
 		  	if(res.token) {
 		  		localStorage.setItem('brewster_token', res.token)
 		  		localStorage.setItem('brewster_id', res.user_id)
-          window.history.pushState({url: "/"},"", "/")
-          this.forceUpdate()
+		  		this.setState({ redirect: <Redirect to='/' /> })
+		  		this.forceUpdate()
 		  	}
 		  	else if(res.errors)
 		  		this.setState({ errors: res.errors })
@@ -37,6 +41,8 @@ class Login extends Component {
 	render() {
 		return (
 			<div id="login">
+				{this.state.redirect}
+
 				<Card className="login-signup">
 				  <Card.Body>
 				  	<Card.Img variant="top" src={require('../images/brewster_banner.png')}></Card.Img>

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import '../stylesheets/BeerShelf.css';
 import BeerSpecs from './BeerSpecs'
 
@@ -18,14 +18,14 @@ class BeerShelf extends Component {
 	changeShowBeer = (beer)=> {
 		fetch('http://localhost:3000/beers/' + beer.id)
 		.then(res => res.json())
-		.then(res => this.setState({ showBeer: res, title: this.checkBeerName(beer.name) }) )
+		.then(res => this.setState({ showBeer: res, title: beer.name }) )
 	}
 
 	renderBeers = ()=> {
 		return (
 			<div className="beer-scroll-grid">
 				{this.props.beers.map( beer =>
-					<div className="item" onClick={ e => this.changeShowBeer(beer) } style={{ backgroundImage: `url(${beer.image_url})` }} >
+					<div className="item" onClick={ e => this.changeShowBeer(beer)} style={{ backgroundImage: `url(${beer.image_url})` }} >
 						<h5>{this.checkBeerName(beer.name)}</h5>
 					</div>
 				)}
@@ -36,6 +36,8 @@ class BeerShelf extends Component {
 	checkBeerName = (string)=> {
 		if(string.includes('('))
 			string = string.slice(0, string.indexOf('('))
+		if(string.length > 22)
+			string = string.slice(0,22)+'…'
 		return string
 	}
 

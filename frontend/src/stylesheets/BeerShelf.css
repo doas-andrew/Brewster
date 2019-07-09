@@ -1,15 +1,3 @@
-.beer-shelf {
-	height: 420px;
-  background-color: white;
-  opacity: 0.90;
-}
-
-.beer-shelf h3 {
-  padding-top: 0.50em;
-  text-align: center;
-  font-style: 'Arial';
-}
-
 .sort-filter {
   opacity: 0.90;
   padding: 1em;
@@ -21,34 +9,29 @@
   left: 2em;
 }
 
-.beer-scroll-grid {
-  height: 100%;
-  display: grid;
-  grid-template-columns: repeat(50, 15em);
-  overflow-x: scroll;
+/**************************************************/
 
-  background: url('../images/shelf2.png') no-repeat;
-}
-
-.item {
-  margin-bottom: 5em;
-  background-size: 4em;
-  background-repeat: no-repeat;
+.beer-shelf {
+  padding-bottom: 3.8em;
+  background: url(../images/shelf3.png) no-repeat;
   background-position: bottom;
 }
 
-.beer-info {
-  /*width: 5em;*/
-  /*border: 2px solid black;*/
-  /*background: red;*/
+.beer-scroll-grid {
+  /* moves the scrollbar down 3.50em */
+  padding-bottom: 3.50em;
+  margin-bottom: -3.50em;
+
+  display: grid;
+  grid-template-columns: repeat(50, 15em);
+  overflow-x: scroll;
 }
 
-#showBeer {
-  width: 80%;
-  margin: auto;
-  border: 2px solid black;
-  border-radius: 16px;
-  padding: 1em;
+.item {
+  height: 17.30em;
+  background-size: 4em;
+  background-repeat: no-repeat;
+  background-position: bottom;
 }
 
 #showBeer img {
@@ -56,14 +39,8 @@
 }
 
 #close-showBeer {
-  /*display: block;*/
-  font-size: 1.50em;
-  line-height: 0;
-  margin-top: 0.50em;
-  margin-left: 0.50em;
-  cursor: pointer;
-  float: left;
   color: rgba(50,50,50, 20%);
+  cursor: pointer;
 }
 
 #close-showBeer:hover {
@@ -72,16 +49,18 @@
 
 #showBeer-labels {
   text-align: right;
+  margin-top: 2em;
 }
 #showBeer-labels #heart{
   color: red;
-}
-#showBeer-labels #rev{
-  color: blue;
-}
-#showBeer-labels span {
   font-size: 1.2em;
 }
+#showBeer-labels #reviews{
+  color: blue;
+  font-size: 1.2em;
+}
+
 #showBeer-values {
   text-align: left;
+  margin-top: 2em;
 }

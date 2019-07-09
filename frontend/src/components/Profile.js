@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 
 import ReviewsContainer from './ReviewsContainer'
 import BeerShelf from './BeerShelf'
@@ -40,8 +40,8 @@ class Profile extends Component {
 		if(this.user_id) {
 			return (
 				<Fragment>
-		  		<Button variant="secondary">Send Friend Request &nbsp; <FaUserPlus/></Button>
-		  		<Button variant="secondary">Message this User &nbsp; <FaEnvelope/></Button>
+		  		<Link to='/' ><Button variant="secondary">Send Friend Request &nbsp; <FaUserPlus/></Button></Link>
+		  		<Link to='/' ><Button variant="secondary">Message this User &nbsp; <FaEnvelope/></Button></Link>
 		  	</Fragment>
 		  )
 		}
@@ -54,7 +54,7 @@ class Profile extends Component {
 			return null
 
 		return (
-			<div className="profile" className="page">
+			<div id="profile" className="page">
 				{this.state.redirect}
 
 		  	<div className="row" style={{ margin: '6em 1em 3em 0' }}>
