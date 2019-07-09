@@ -27,6 +27,7 @@ class BeerSpecs extends Component {
 						<strong>Acidity (Ph):</strong><br/>
 						<br/>
 						<span ><FaHeart/> {this.props.beer.favorites.length} &nbsp; &nbsp; <FaEdit/> {this.props.beer.reviews.length}</span>
+						{/* {need to make this a link to increase favorites or write a review} */}
 					</div>
 
 					<div className="col">
