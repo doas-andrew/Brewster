@@ -7,6 +7,7 @@ class BeerSpecs extends Component {
 		fav: false,
 		beer: this.props.beer
 	}
+
 	handleFav = () => {
 		let method;
 		let user_id = localStorage.getItem('brewster_id')
@@ -45,7 +46,7 @@ class BeerSpecs extends Component {
 		return !!this.state.beer.favorites.find(fav => fav.user_id == localStorage.getItem('brewster_id'))
 	}
 	render() {
-		console.log('render')
+
 		return (
 			<div id="showBeer">
 				<span id="close-showBeer" onClick={this.props.closeBeerSpecs}><FaChevronCircleLeft /></span>

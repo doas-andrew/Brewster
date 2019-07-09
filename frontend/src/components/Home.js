@@ -57,7 +57,7 @@ class Home extends Component {
 					<option value="special">Special</option>
 
 				</select>
-				<div style={{ margin: '6em auto', width: '50em' }}><BeerShelf handleToggle={this.handleToggle} title={this.state.title} beers={this.state.fBeers} /></div>
+				<div style={{ margin: '6em auto', width: '50em' }}><BeerShelf title={this.state.title} beers={this.state.fBeers} /></div>
 			</div>
 		)
 	}
