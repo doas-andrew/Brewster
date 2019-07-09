@@ -11,7 +11,7 @@ class Home extends Component {
 		showAll: false,
 		allBeers: [],
 		filter: 'show_all',
-		sort: 'name'
+		sort: 'description'
 	}
 
 	componentDidMount() {
@@ -70,6 +70,7 @@ class Home extends Component {
 
 					Sort by<br/>
 					<select value={this.state.sort} onChange={ e => this.setState({ sort: e.target.value }) }>
+						<option value="description">Options</option>
 						<option value="name">Name</option>
 						<option value="abv">ABV</option>
 						<option value="ibu">IBU</option>
