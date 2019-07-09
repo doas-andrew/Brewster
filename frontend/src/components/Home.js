@@ -10,7 +10,7 @@ class Home extends Component {
 		loggedIn: !!localStorage.getItem('brewster_token'),
 		showAll: false,
 		allBeers: [],
-		title: "All Beers"
+		title: "Craft Beers"
 	}
 
 	componentDidMount() {
@@ -37,6 +37,13 @@ class Home extends Component {
 	render() {
 		return (
 			<div id="home">
+				<select id="filterBeersSelect" onClick={console.log("Hey i need to add the function to the select values")}>
+					<option value="Select Type" selected>Select Type</option>
+					<option value="IPA">IPA</option>
+					<option value="ale">Ale</option>
+					<option value="Porter">Porter</option>
+					<option value="Stout">Stout</option>
+				</select>
 				<div style={{ margin: '6em auto', width: '50em' }}><BeerShelf handleToggle={this.handleToggle} title={this.state.title} beers={this.state.allBeers} /></div>
 			</div>
 		)

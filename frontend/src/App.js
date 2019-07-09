@@ -39,7 +39,6 @@ class App extends Component {
     	<Router>
 	    	<div className="App">
 	      	<RenderNavbar loggedIn={this.state.loggedIn} changeLoggedIn={this.changeLoggedIn} handleSearch={this.handleSearch} />
-
     			<Switch>
 		        <Route exact path="/" component={Home} />
 		        <Route exact path="/profile/:id" component={Profile}  />
