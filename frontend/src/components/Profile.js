@@ -49,6 +49,7 @@ class Profile extends Component {
 
 	render() {
 		console.log(this.state.user)
+
 		if(this.state.user.id === undefined)
 			return null
 

@@ -1,22 +1,27 @@
 .beer-shelf {
 	height: 420px;
   background-color: white;
-  opacity: 0.9;
+  opacity: 0.90;
 
   /*overflow-y: scroll;*/
 }
 
 .beer-shelf h3 {
-  margin-top: 0.50em;
+  padding-top: 0.50em;
   /*margin-left: 1em;*/
   text-align: center;
   font-style: 'Arial';
 }
 
-#filterBeersSelect {
+.sort-filter {
+  opacity: 0.90;
+  padding: 1em;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 16px;
   position: absolute;
-  top: 7em;
-  left: 11em;
+  top: 10em;
+  left: 2em;
 }
 
 .beer-scroll-grid {
@@ -46,6 +51,8 @@
   width: 80%;
   margin: auto;
   border: 2px solid black;
+  border-radius: 16px;
+  padding: 1em;
 }
 
 #showBeer img {

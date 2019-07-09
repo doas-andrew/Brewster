@@ -5,9 +5,11 @@ import BeerSpecs from './BeerSpecs'
 class BeerShelf extends Component {
 
 	state = {
-		showBeer: false,
-		title: ''
+		title: '',
+		showBeer: false
 	}
+
+	// beers = this.props.beers ? this.props.beers : []
 
 	componentDidMount(){
 		this.setState({title: this.props.title})
@@ -45,7 +47,6 @@ class BeerShelf extends Component {
 			title: this.props.title
 		})
 	}
-	// TODO: Bug fix for profile beershelf
 
 	render() {
 		return (

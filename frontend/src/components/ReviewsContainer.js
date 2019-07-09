@@ -13,7 +13,6 @@ class ReviewsContainer extends Component {
 	)
 
 	render() {
-		console.log(this.props.reviews)
 		return (
 			<div id="reviews-container" className="" >
 				{ this.renderReviews() }

@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Card, Button } from 'react-bootstrap'
 import { LinkContainer } from 'react-router-bootstrap';
 
@@ -10,9 +10,8 @@ class Home extends Component {
 		loggedIn: !!localStorage.getItem('brewster_token'),
 		showAll: false,
 		allBeers: [],
-		fBeers: [],
-		title: "Craft Beers",
-		filter: ''
+		filter: 'show_all',
+		sort: 'name'
 	}
 
 	componentDidMount() {
@@ -36,28 +35,57 @@ class Home extends Component {
 		</Card>
 	)
 
-		handleFilter = (e) => {
-			let val = e.target.value
-			val === 'Select Type' ? this.setState({ filter: val, fBeers: this.state.allBeers}) :
-			this.setState({ filter: val, fBeers: this.state.allBeers.filter(beer => beer.description.toLowerCase().includes(val)) })
-		}
+	getDisplayBeers = ()=> {
+		let beers = this.state.allBeers
+		beers = beers.sort((a,b) => this.compare(a,b, this.state.sort))
 
+		if(this.state.filter !== 'show_all')
+			beers = beers.filter(beer => beer.description.toLowerCase().includes(this.state.filter) )
+
+		return beers
+	}
+
+	compare = (a,b, attr)=> {
+		if(a[attr] < b[attr]) return -1
+		if(a[attr] > b[attr]) return  1
+		return 0
+	}
+
+	beerSearch = ()=> {
+		return (
+			<Fragment>
+				<div className="sort-filter" >
+					Filter by<br/>
+					<select value={this.state.filter} onChange={ e => this.setState({ filter: e.target.value }) }>
+						<option value='show_all'>Show All</option>
+						<option value="ale">IPA</option>
+						<option value="pilsner">Pilsner</option>
+						<option value="porter">Porter</option>
+						<option value="stout">Stout</option>
+						<option value="lager">Lager</option>
+						<option value="special">Special</option>
+					</select>
+
+					<br/><br/>
+
+					Sort by<br/>
+					<select value={this.state.sort} onChange={ e => this.setState({ sort: e.target.value }) }>
+						<option value="name">Name</option>
+						<option value="abv">ABV</option>
+						<option value="ibu">IBU</option>
+						<option value="ph">Ph</option>
+					</select>
+				</div>
+
+				<div style={{ margin: '6em auto', width: '50em' }}><BeerShelf beers={this.getDisplayBeers()}  title={"Craft Beers"} /></div>
+			</Fragment>
+		)
+	}
 
 	render() {
 		return (
 			<div id="home">
-				<select id="filterBeersSelect" value={this.state.filter} onChange={this.handleFilter}>
-					<option value="Select Type" selected>Select Type</option>
-					<option value="ale">IPA</option>
-					<option value="pilsner">Pilsner</option>
-					<option value="porter">Porter</option>
-					<option value="stout">Stout</option>
-					<option value="lager">Lager</option>
-
-					<option value="special">Special</option>
-
-				</select>
-				<div style={{ margin: '6em auto', width: '50em' }}><BeerShelf title={this.state.title} beers={this.state.fBeers} /></div>
+				{ this.state.loggedIn ? this.beerSearch() : this.splash() }
 			</div>
 		)
 	}
