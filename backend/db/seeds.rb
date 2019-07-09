@@ -18,9 +18,19 @@ romy = User.create(username: 'Romy', name: 'Romy Maghsoudi', password: '123')
 will = User.create(username: 'Will', name: 'Williard Jones', password: '123')
 asa = User.create(username: 'ASA', name: 'Andrew Allen', password: '123')
 
-romy.favorites << [ Favorite.create(beer: Beer.all[0]), Favorite.create(beer: Beer.all[2]) ]
-Beer.all.each {|beer| will.favorites << Favorite.create(beer: beer) }
-asa.favorites  << [ Favorite.create(beer: Beer.all[1]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4]), Favorite.create(beer: Beer.all[4])  ]
+Beer.all.each{ |beer| 
+	if rand(2) == 1
+		Favorite.create(user_id: romy.id, beer_id: beer.id)
+	end
+
+	if rand(2) == 1
+		Favorite.create(user_id: will.id, beer_id: beer.id)
+	end
+
+	if rand(2) == 1
+		Favorite.create(user_id: asa.id,  beer_id: beer.id)
+	end
+}
 
 asa.reviews  << [ Review.create(rating: 0, title: "Andrew's review", content: "This beer is garbo.", beer: Beer.all[0]) ]
 romy.reviews << [ Review.create(rating: 5, title: "Romy's review", content: "Don't listen to Andrew. This beer is GREAT.", beer: Beer.all[0]) ]
