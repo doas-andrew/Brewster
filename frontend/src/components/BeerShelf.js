@@ -5,7 +5,8 @@ import BeerSpecs from './BeerSpecs'
 class BeerShelf extends Component {
 
 	state = {
-		showBeer: false
+		showBeer: false,
+		title: ''
 	}
 
 	componentDidMount(){
@@ -13,7 +14,9 @@ class BeerShelf extends Component {
 	}
 
 	changeShowBeer = (beer)=> {
-		this.setState({ showBeer: beer, title: this.checkBeerName(beer.name) })
+		fetch('http://localhost:3000/beers/' + beer.id)
+		.then(res => res.json())
+		.then(res => this.setState({ showBeer: res, title: this.checkBeerName(beer.name) }) )
 	}
 
 	renderBeers = ()=> {
@@ -43,6 +46,7 @@ class BeerShelf extends Component {
 		})
 	}
 	// TODO: Bug fix for profile beershelf
+
 	render() {
 		return (
 			<div className="beer-shelf">

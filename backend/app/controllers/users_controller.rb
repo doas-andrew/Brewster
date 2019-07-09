@@ -4,6 +4,11 @@ class UsersController < ApplicationController
 		render json: User.all, each_serializer: UserSerializer
 	end
 
+	def show
+		@user = User.find(params[:id])
+		render json: @user, each_serializer: UserSerializer
+	end
+
 	def create
 		@user = User.new(user_params)
 		if(@user.save)
