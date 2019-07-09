@@ -26,9 +26,7 @@ class BeerShelf extends Component {
 			<div className="beer-scroll-grid">
 				{this.props.beers.map( beer =>
 					<div className="item" onClick={ e => this.changeShowBeer(beer) } style={{ backgroundImage: `url(${beer.image_url})` }} >
-						<div className="beer-info">
-							<h5>{this.checkBeerName(beer.name)}</h5>
-						</div>
+						<h5>{this.checkBeerName(beer.name)}</h5>
 					</div>
 				)}
 			</div>

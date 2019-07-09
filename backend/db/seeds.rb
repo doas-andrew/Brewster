@@ -7,11 +7,13 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # only run this file once after migrating - this data should not change
-require_relative './fetch_beers.rb'
 
+Beer.destroy_all
 User.destroy_all
 Review.destroy_all
 Favorite.destroy_all
+
+require_relative './fetch_beers.rb'
 
 # validate login with login_name -- username is for UI/UX purposes
 romy = User.create(username: 'Romy', name: 'Romy Maghsoudi', password: '123')
