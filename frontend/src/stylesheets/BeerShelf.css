@@ -2,13 +2,10 @@
 	height: 420px;
   background-color: white;
   opacity: 0.90;
-
-  /*overflow-y: scroll;*/
 }
 
 .beer-shelf h3 {
   padding-top: 0.50em;
-  /*margin-left: 1em;*/
   text-align: center;
   font-style: 'Arial';
 }
@@ -31,7 +28,6 @@
   overflow-x: scroll;
 
   background: url('../images/shelf2.png') no-repeat;
-/*  background-size: 100%;*/
 }
 
 .item {

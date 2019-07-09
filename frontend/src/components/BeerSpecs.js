@@ -9,33 +9,28 @@ class BeerSpecs extends Component {
 		beer: this.props.beer
 	}
 
+	fetchBeerState = ()=> {
+		fetch('http://localhost:3000/beers/'+this.state.beer.id)
+		.then(res => res.json())
+		.then(res => this.setState({ beer: res }) )
+	}
+
 	handleFav = () => {
 		let url= 'http://localhost:3000/favorites/'
 		let c_user_id = localStorage.getItem('brewster_id')
+		let fetchHash = {}
 
 		if(this.checkFav()) {
 			url += this.state.beer.favorites.find(fav => fav.user_id == c_user_id).id
-
-			fetch(url, { method: 'DELETE' })
-			.then(res => {
-				fetch('http://localhost:3000/beers/'+this.state.beer.id)
-				.then(res => res.json())
-				.then(res => this.setState({ beer: res }) )
-			})
+			fetchHash.method = 'DELETE'
 		}
 		else {
-			fetch(url, {
-				method: 'POST',
-				headers: { Accept: 'application/json', 'Content-Type': 'application/json' },
-				body: JSON.stringify({ user_id: c_user_id, beer_id: this.state.beer.id })
-			})
-			.then(res => res.json())
-			.then(res => {
-				fetch('http://localhost:3000/beers/'+this.state.beer.id)
-				.then(res => res.json())
-				.then(res => this.setState({ beer: res }) )
-			})
+			fetchHash.method = 'POST'
+			fetchHash.headers = { Accept: 'application/json', 'Content-Type': 'application/json' }
+			fetchHash.body = JSON.stringify({ user_id: c_user_id, beer_id: this.state.beer.id })
 		}
+		fetch(url, fetchHash)
+		.then(res => this.fetchBeerState() )
 	}
 
 	checkFav = () => {
@@ -60,9 +55,9 @@ class BeerSpecs extends Component {
 					</div>
 
 					<div id="showBeer-values" className="col">
-					<strong>{this.state.beer.abv}</strong><br/>
-					<strong>{this.state.beer.ibu}</strong><br/>
-					<strong>{this.state.beer.ph}</strong><br/>
+						<strong>{this.state.beer.abv}</strong><br/>
+						<strong>{this.state.beer.ibu}</strong><br/>
+						<strong>{this.state.beer.ph}</strong><br/>
 					</div>
 				</div>
 			</div>
