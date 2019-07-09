@@ -78,7 +78,7 @@ class Home extends Component {
 					</select>
 				</div>
 
-				<div style={{ margin: '6em auto', width: '75em' }}><BeerShelf beers={this.getDisplayBeers()}  title={"Craft Beers"} /></div>
+				<div style={{ margin: '6em auto', width: '70%' }}><BeerShelf beers={this.getDisplayBeers()}  title={"Craft Beers"} /></div>
 			</Fragment>
 		)
 	}
