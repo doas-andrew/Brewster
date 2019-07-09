@@ -70,6 +70,12 @@
 #showBeer-labels {
   text-align: right;
 }
+#showBeer-labels #heart{
+  color: red;
+}
+#showBeer-labels #rev{
+  color: blue;
+}
 #showBeer-labels span {
   font-size: 1.2em;
 }
