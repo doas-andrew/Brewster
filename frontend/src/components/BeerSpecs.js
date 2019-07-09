@@ -44,7 +44,6 @@ class BeerSpecs extends Component {
 	checkFav = () => {
 		return !!this.state.beer.favorites.find(fav => fav.user_id == localStorage.getItem('brewster_id'))
 	}
-
 	render() {
 		console.log('render')
 		return (

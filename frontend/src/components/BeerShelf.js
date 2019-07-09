@@ -42,7 +42,7 @@ class BeerShelf extends Component {
 			title: this.props.title
 		})
 	}
-
+	// TODO: Bug fix for profile beershelf
 	render() {
 		return (
 			<div className="beer-shelf">
