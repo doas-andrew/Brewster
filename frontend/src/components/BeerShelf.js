@@ -69,8 +69,8 @@ class BeerShelf extends Component {
 	checkBeerName = (string)=> {
 		if(string.includes('('))
 			string = string.slice(0, string.indexOf('('))
-		if(string.length > 22)
-			string = string.slice(0,22)+'…'
+		if(string.length > 15)
+			string = string.slice(0,15)+'…'
 		return string
 	}
 
