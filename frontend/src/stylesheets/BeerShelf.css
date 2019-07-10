@@ -27,6 +27,7 @@
 }
 
 .beer-shelf {
+  background-color: white;
   padding-top: 1em;
   padding-bottom: 3.8em;
   background: url(../images/shelf3.png) no-repeat;
