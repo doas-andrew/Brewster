@@ -49,11 +49,11 @@ class Login extends Component {
 				  	{this.state.errors.length ? this.showErrors() : null}
 				  	<br/>
 						<form onSubmit={this.handleLogin}>
-							<input type="text" name="login_name" placeholder=" Username" />
+							<input className='username' type="text" name="login_name" placeholder=" Username" />
 							<br/><br/>
-							<input type="password" name="password" placeholder=" Password" />
+							<input className='password' type="password" name="password" placeholder=" Password" />
 							<br/><br/>
-							<Button type="submit" variant="secondary">Login</Button>
+							<Button className='submit' type="submit" variant="secondary">Login</Button>
 							<br/>
 						</form>
 				  </Card.Body>
