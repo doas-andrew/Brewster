@@ -7,7 +7,7 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 # only run this file once after migrating - this data should not change
-
+require 'faker'
 Beer.destroy_all
 User.destroy_all
 Review.destroy_all
@@ -34,6 +34,6 @@ Beer.all.each{ |beer|
 	end
 }
 
-asa.reviews  << [ Review.create(rating: 0, title: "Andrew's review", content: "This beer is garbo.", beer: Beer.all[0]) ]
-romy.reviews << [ Review.create(rating: 5, title: "Romy's review", content: "Don't listen to Andrew. This beer is GREAT.", beer: Beer.all[0]) ]
-will.reviews << [ Review.create(rating: 1, title: "Will's review", content: "Cures cancer but leaves a terrible after-taste. Not worth.", beer: Beer.all[5]) ]
+100.times do
+	User.all[rand(3)].reviews <<  Review.create(rating: rand(1..5), title: Faker::Quote.unique.robin, content: Faker::Quote.famous_last_words, beer: Beer.all[rand(30)] ) 
+end

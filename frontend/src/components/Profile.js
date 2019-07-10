@@ -72,7 +72,7 @@ class Profile extends Component {
 			  	<div id="user-card" className="col-4">
 			  		<div id="avatar-container">
 				  		{ this.user_id === this.state.user.id ? <FaCogs id="edit-profile-btn" onClick={()=> this.setState({ redirect: <Redirect to='/edit-profile' /> }) } /> : null }
-				  		<img src={this.state.user.avatar ? this.state.user.avatar : default_avatar } alt="avatar" />
+				  		<img src={this.state.user.avatar ? require(this.state.user.avatar) : default_avatar } alt="avatar" />
 				  	</div>
 				  	{this.renderProfileButtons()}
 			  	</div>

@@ -9,7 +9,7 @@ gem 'rest-client'
 
 # used to specify allowed origins for CORS 
 gem 'rack-cors'
-
+gem 'faker'
 # generates tokens
 gem 'jwt'
 gem 'active_model_serializers'
