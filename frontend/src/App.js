@@ -18,19 +18,13 @@ const loggedIn = !!localStorage.getItem('brewster_token')
 
 class App extends Component {
 
-	handleSearch = e => {
-		e.preventDefault()
-		window.history.pushState({url: "/search/"+e.target.search.value},"", "/search/"+e.target.search.value)
-		this.setState({ search: e.target.search.value })
-	}
-
 	render() {
 	  return (
-    	<BrowserRouter>
+	  	<BrowserRouter>
 	    	<div className="App">
 	    		<RenderNavbar />
 
-    			<Switch>
+	  			<Switch>
 		        <Route exact path="/" component={Home} />
 		        <Route exact path="/profile/:id" component={Profile} />
 		        <Route exact path="/edit-profile" render={()=> !loggedIn ? <Redirect to='/'/> : <EditProfile/>} />
@@ -40,9 +34,9 @@ class App extends Component {
 	          <Route exact path="/sign-up" render={()=> loggedIn ? <Redirect to='/'/> : <SignUp/>} />
 	          <Route component={NotFound} />
 	      	</Switch>
-      	</div>
+	    	</div>
 			</BrowserRouter>
-	  );
+	  )
 	}
 }
 

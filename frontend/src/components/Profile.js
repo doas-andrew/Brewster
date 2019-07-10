@@ -12,9 +12,11 @@ import '../stylesheets/Profile.css'
 const default_avatar = require('../images/default_avatar.jpg')
 
 class Profile extends Component {
+
 	state = { 
 		user: {},
-		redirect: null
+		redirect: null,
+		showReviewedBeers: false
 	}
 
 	user_id = localStorage.getItem('brewster_id')
@@ -49,6 +51,14 @@ class Profile extends Component {
 		}
 	}
 
+	getBeers = ()=> {
+		console.log(this.state.user)
+		if(this.state.showReviewedBeers)
+			return this.state.user.reviews(review => review.beer)
+		else
+			return this.state.user.favorite_beers
+	}
+
 	render() {
 		if(this.state.user.id === undefined)
 			return null
@@ -73,8 +83,11 @@ class Profile extends Component {
 				</div>
 
 				<br/><br/>
-
-				<BeerShelf beers={this.state.user.favorite_beers} title={this.state.user.username+"'s Favorites"} />
+				<input type="checkbox"
+					checked={this.state.showReviewedBeers}
+					onClick={() => this.setState({ showReviewedBeers: !this.state.showReviewedBeers }) }
+				/> Only show beers this user has reviewed.
+				<BeerShelf beers={this.getBeers()} title={this.state.user.username+"'s Favorites"} />
 			</div>
 		)
 	}

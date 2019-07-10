@@ -81,7 +81,7 @@ class BeerShelf extends Component {
 			showRevs: false
 		})
 	}
-
+	
 	renderBeers = ()=> {
 		return (
 			<div className="beer-scroll-grid">
