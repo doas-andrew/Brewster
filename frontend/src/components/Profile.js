@@ -35,8 +35,8 @@ class Profile extends Component {
 		if(this.user_id === this.state.user.id)
 			return (
 				<Fragment>
-		  		<Button variant="secondary">Edit your Favorites &nbsp; <FaBeer/></Button>
-		  		<Button variant="secondary">something to do with Reviews &nbsp; <FaEdit/></Button>
+		  		{/* <Button variant="secondary">Edit your Favorites &nbsp; <FaBeer/></Button>
+		  		<Button variant="secondary">something to do with Reviews &nbsp; <FaEdit/></Button> */}
 		  	</Fragment>
   		)
 		if(this.user_id) {
@@ -67,11 +67,10 @@ class Profile extends Component {
 				  	{this.renderProfileButtons()}
 			  	</div>
 
-			  	<div className="col" style={{ backgroundColor: '' }}>
-			  		<h3>Reviews by {this.state.user.name}</h3>
-			  		<ReviewsContainer reviews={this.state.user.reviews} />
-					</div>
+			  	<div className="col">
+			  		<ReviewsContainer title={"Reviews by "+this.state.user.name} reviews={this.state.user.reviews} />
 				</div>
+			</div>
 
 				<BeerShelf beers={this.state.user.favorite_beers} title={this.state.user.username+"'s Favorites"} />
 			</div>
