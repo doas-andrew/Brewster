@@ -2,17 +2,17 @@
   background-color: rgba(255, 255, 255, 90%)
 }
 
-#user-card{
-  margin: 0 3em 0 1em;
+#profile .row {
+  margin: 0 3em 3em 3em;
 }
+
 #user-card button {
-  margin: auto;
   border-radius: 0;
   display: block;
   width: 20em;
 }
+
 #avatar-container {
-  margin: auto;
   width: 20em;
   height: 20em;
 }
@@ -20,6 +20,8 @@
   width: 100%;
   height: 100%;
 }
+
+#edit-profile-btn:hover{ color: rgba(255,255,255,70%); }
 #edit-profile-btn {
   position: absolute;
   margin-top: 0.20em;
@@ -28,7 +30,4 @@
   line-height: 0;
   cursor: pointer;
   color: rgba(60,60,60,20%);
-}
-#edit-profile-btn:hover{
-  color: rgba(255,255,255,70%);
 }
