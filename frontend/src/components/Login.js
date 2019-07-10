@@ -43,7 +43,7 @@ class Login extends Component {
 			<div id="login">
 				{this.state.redirect}
 
-				<Card className="login-signup">
+				<Card className="brew-card">
 				  <Card.Body>
 				  	<Card.Img variant="top" src={require('../images/brewster_banner.png')}></Card.Img>
 				  	{this.state.errors.length ? this.showErrors() : null}

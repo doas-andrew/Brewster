@@ -9,6 +9,8 @@ import { FaCogs, FaUserPlus, FaEnvelope, FaBeer, FaEdit } from 'react-icons/fa';
 import '../stylesheets/Profile.css'
 
 
+const default_avatar = require('../images/default_avatar.jpg')
+
 class Profile extends Component {
 	state = { 
 		user: {},
@@ -48,8 +50,6 @@ class Profile extends Component {
 	}
 
 	render() {
-		console.log(this.state.user)
-
 		if(this.state.user.id === undefined)
 			return null
 
@@ -60,9 +60,9 @@ class Profile extends Component {
 		  	<div className="row" style={{ margin: '6em 1em 3em 0' }}>
 
 			  	<div id="user-card" className="col-4">
-			  		<div id="avatar-container" style={{ backgroundColor: 'red'}}>
-				  		{ this.user_id === this.state.user.id ? <span onClick={console.log} id="edit-profile-btn"><FaCogs/></span> : null }
-				  		<img src={require('../images/default_avatar.jpg')} alt="avatar" />
+			  		<div id="avatar-container">
+				  		{ this.user_id === this.state.user.id ? <FaCogs id="edit-profile-btn" onClick={()=> this.setState({ redirect: <Redirect to='/edit-profile' /> }) } /> : null }
+				  		<img src={this.state.user.avatar ? this.state.user.avatar : default_avatar } alt="avatar" />
 				  	</div>
 				  	{this.renderProfileButtons()}
 			  	</div>

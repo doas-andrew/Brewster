@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { FaHeart, FaEdit, FaChevronCircleLeft } from 'react-icons/fa'
+import { FaHeart, FaEdit, FaChevronCircleLeft, FaTimesCircle } from 'react-icons/fa'
 import { Button } from 'react-bootstrap'
 
 const loggedIn = !!localStorage.getItem('brewster_token')
@@ -9,7 +9,8 @@ class BeerSpecs extends Component {
 	state = { showReviewForm: false }
 
 	renderReviewForm = ()=>
-		<form id='showBeer-review' onSubmit={this.props.submitReview}>
+		<form id='review-form' onSubmit={this.props.submitReview}>
+			<FaTimesCircle className="close-btn" onClick={ e => loggedIn ? this.setState({ showReviewForm: !this.state.showReviewForm }) : null } />
 			<strong>Leave a Review!</strong>
 			<textarea id='showBeer-review-input' rows='5' cols='25' name="content" placeholder=' Type your review here'></textarea>
 			
@@ -41,15 +42,19 @@ class BeerSpecs extends Component {
 
 						<br/><br/>
 
-						<span id='heart' style={{ color: this.props.checkFav() ? 'red' : 'grey' }} onClick={ ()=> loggedIn ? this.props.handleFav() : null }>
-							<FaHeart/>
-						</span> {this.props.beer.favorites.length}
+						<FaHeart
+							className='heart'
+							onClick={ ()=> loggedIn ? this.props.handleFav() : null }
+							style={{ color: this.props.checkFav() ? 'red' : 'grey' }}
+						/> {this.props.beer.favorites.length}
 
 						&nbsp; &nbsp; &nbsp;
 
-						<span id='reviews' style={{ color: this.state.showReviewForm ? 'DodgerBlue' : 'grey' }} onClick={ e => loggedIn ? this.setState({ showReviewForm: !this.state.showReviewForm }) : null }>
-							<FaEdit/>
-						</span> {this.props.beer.reviews.length}
+						<FaEdit
+							className="notepad"
+							onClick={ e => loggedIn ? this.setState({ showReviewForm: !this.state.showReviewForm }) : null }
+							style={{ color: this.state.showReviewForm ? 'DodgerBlue' : 'grey' }}
+						/> {this.props.beer.reviews.length}
 						
 						<br/><br/>
 

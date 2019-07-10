@@ -40,6 +40,7 @@ ActiveRecord::Schema.define(version: 2019_07_05_160356) do
   create_table "reviews", force: :cascade do |t|
     t.string "title"
     t.string "content"
+    t.string "author"
     t.integer "rating"
     t.bigint "user_id"
     t.bigint "beer_id"
@@ -54,6 +55,7 @@ ActiveRecord::Schema.define(version: 2019_07_05_160356) do
     t.string "login_name"
     t.string "name"
     t.string "password"
+    t.string "avatar"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

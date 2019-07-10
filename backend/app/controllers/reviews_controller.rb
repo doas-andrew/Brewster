@@ -9,6 +9,10 @@ class ReviewsController < ApplicationController
     end
   end
 
+  def destroy
+    @review = Review.destroy(params[:id])
+  end
+
   private
 
   def review_params

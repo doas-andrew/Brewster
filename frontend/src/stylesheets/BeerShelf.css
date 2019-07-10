@@ -70,13 +70,11 @@
   margin-top: 2em;
 }
 
-#heart{
-  color: red;
+.heart{
   cursor: pointer;
   font-size: 1.2em;
 }
-#reviews{
-  color: DodgerBlue;
+.notepad{
   cursor: pointer;
   font-size: 1.2em;
 }
@@ -86,13 +84,42 @@
   margin-top: 2em;
 }
 
-#showBeer-review {
+#review-form {
   width: 17em;
 
   padding: 1em 1em 1em 1.5em;
   margin: -1em 0 0 2em;
 
   border: 1px solid black;
-  border-radius: 5px 40px 5px 40px;
+  border-radius: 40px 5px 40px 5px;
   background-color: silver;
+}
+
+#profile .review-list { background-color: rgba(255, 255, 255, 90%) }
+.review-list {
+  text-align: left;
+  padding: 2em 2em 2em 0;
+}
+
+.review-list li {
+  list-style: none;
+  margin-bottom: 1em;
+}
+.review-list h4 {
+  margin-left: 2em;
+}
+
+.trashcan:hover { color: red; }
+.trashcan {
+  cursor: pointer;
+  color: grey;
+}
+
+.close-btn:hover { color: DodgerBlue; }
+.close-btn {
+  font-size: 1.30em;
+  margin: -0.40em -0.40em 0 0;
+  float: right;
+  color:grey;
+  color: grey;
 }

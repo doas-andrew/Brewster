@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 
 import './stylesheets/App.css';
 
@@ -9,6 +9,7 @@ import Login from './components/Login'
 import SignUp from './components/SignUp'
 import AboutUs from './components/AboutUs'
 import Profile from './components/Profile'
+import EditProfile from './components/EditProfile'
 import SearchResults from './components/SearchResults'
 import NotFound from './components/NotFound'
 
@@ -25,12 +26,14 @@ class App extends Component {
 
 	render() {
 	  return (
-    	<Router>
+    	<BrowserRouter>
 	    	<div className="App">
-	      	<RenderNavbar handleSearch={this.handleSearch} />
+	    		<RenderNavbar />
+
     			<Switch>
 		        <Route exact path="/" component={Home} />
-		        <Route exact path="/profile/:id" component={Profile}  />
+		        <Route exact path="/profile/:id" component={Profile} />
+		        <Route exact path="/edit-profile" render={()=> !loggedIn ? <Redirect to='/'/> : <EditProfile/>} />
 		        <Route exact path="/search/:search" component={SearchResults}  />
 		        <Route exact path="/about-us" component={AboutUs} />
 	          <Route exact path="/login" render={()=> loggedIn ? <Redirect to='/'/> : <Login/>}  />
@@ -38,7 +41,7 @@ class App extends Component {
 	          <Route component={NotFound} />
 	      	</Switch>
       	</div>
-			</Router>
+			</BrowserRouter>
 	  );
 	}
 }

@@ -1,6 +1,11 @@
 import React, { Component, Fragment } from 'react'
-import '../stylesheets/BeerShelf.css';
 import BeerSpecs from './BeerSpecs'
+
+import { FaTrashAlt } from 'react-icons/fa';
+import '../stylesheets/BeerShelf.css';
+
+
+const user_id = localStorage.getItem('brewster_id')
 
 class BeerShelf extends Component {
 
@@ -25,8 +30,13 @@ class BeerShelf extends Component {
 				beer_id: this.state.showBeer.id
 			})
 		})
-		.then(res => this.getShowBeer())
+		.then(()=> this.getShowBeer())
 		form.reset()
+	}
+
+	deleteReview = (id)=> {
+		fetch('http://localhost:3000/reviews/'+id,{ method: 'DELETE' })
+		.then(()=> this.getShowBeer() )
 	}
 
 	checkFav = () => !!this.state.showBeer.favorites.find(fav => fav.user_id == localStorage.getItem('brewster_id'))
@@ -56,18 +66,6 @@ class BeerShelf extends Component {
 		.then(res => this.setState({  title: res.name, showBeer: res, showRevs: res.reviews }) )
 	}
 
-	renderBeers = ()=> {
-		return (
-			<div className="beer-scroll-grid">
-				{this.props.beers.map( beer =>
-					<div className="item" onClick={ e => this.getShowBeer(beer.id)} style={{ backgroundImage: `url(${beer.image_url})` }} >
-						<h5>{this.checkBeerName(beer.name)}</h5>
-					</div>
-				)}
-			</div>
-		)
-	}
-
 	checkBeerName = (string)=> {
 		if(string.includes('('))
 			string = string.slice(0, string.indexOf('('))
@@ -84,11 +82,30 @@ class BeerShelf extends Component {
 		})
 	}
 
+	renderBeers = ()=> {
+		return (
+			<div className="beer-scroll-grid">
+				{this.props.beers.map( beer =>
+					<div className="item" onClick={ e => this.getShowBeer(beer.id)} style={{ backgroundImage: `url(${beer.image_url})` }} >
+						<h5>{this.checkBeerName(beer.name)}</h5>
+					</div>
+				)}
+			</div>
+		)
+	}
+
 	renderReviewList = ()=>
 		<div className="review-list">
-			<h4>Reviews</h4>
+			<h4>Reviews</h4><hr/>
 			<ul style={{ listDecoration: 'none' }}>
-				{ this.state.showBeer.reviews.map(review => <li>{review.content} <button>x</button></li>) }
+				{
+					this.state.showBeer.reviews.map(review => 
+						<li>
+							{console.log(review, review.user_id, user_id)}
+							{ review.user.id == user_id ? <FaTrashAlt onClick={ e => this.deleteReview(review.id)} className="trashcan"/> : null } &nbsp; &nbsp;
+							{ review.author } wrote: &nbsp; { review.content }
+						</li>) 
+				}
 			</ul>
 		</div>
 
@@ -100,7 +117,7 @@ class BeerShelf extends Component {
 					<hr/>
 					{ this.state.showBeer ? <BeerSpecs beer={this.state.showBeer} submitReview={this.submitReview} checkFav={this.checkFav} handleFav={this.handleFav} closeBeerSpecs={this.closeBeerSpecs} /> : this.renderBeers() }
 			  </div>
-			  { this.state.showBeer ? this.renderReviewList() : null }
+			  { this.state.showBeer.reviews && this.state.showBeer.reviews[0] ? this.renderReviewList() : null }
 			</Fragment>
 		)
 	}

@@ -19,11 +19,19 @@ class User < ApplicationRecord
     length: {maximum: 50}
   }
 
-  before_save {
-    [ self.login_name = self.username.downcase,
-      self.password = RSA_Keys::encrypt(self.password)
-    ]
+  before_create {
+    self.login_name = self.username.downcase
   }
+
+  before_save {
+    self.encrypt_new_passwords
+  }
+
+  def encrypt_new_passwords
+    if self.password_changed?
+      self.password = RSA_Keys.encrypt(self.password)
+    end
+  end
 
   def authenticate(password)
     RSA_Keys::decrypt(self.password) == password
@@ -35,7 +43,8 @@ class User < ApplicationRecord
       name: self.name,
       username: self.username,
       favorite_beers: self.beers,
-      reviews: self.reviews
+      reviews: self.reviews,
+      avatar: self.avatar
     }
   end
 end

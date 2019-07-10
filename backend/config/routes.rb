@@ -6,10 +6,10 @@ Rails.application.routes.draw do
   get '/beers/specs/:id', to: 'beers#beer_specs_stats'
   get '/beers/reviews/:id', to: 'beers#beer_reviews'
   
-  resources :beers, only: [:index, :show]
-  resources :favorites
-  resources :reviews
-  resources :users
+  resources :beers, only: [ :index, :show  ]
+  resources :favorites, only: [:create, :destroy]
+  resources :reviews, only: [:create, :destroy]
+  resources :users, only: [:create, :update]
 
   post '/login', to: "sessions#authenticate"
 end

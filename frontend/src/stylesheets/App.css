@@ -1,5 +1,5 @@
 body {
-  background: url(../images/home2.jpeg) no-repeat center center fixed;
+  background: url(../images/home3.jpeg) no-repeat center center fixed;
   background-size: cover;
   overflow: visible;
 }
@@ -29,15 +29,6 @@ body {
   color: #61dafb;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-
 .card {
   width: 20em;
 }
@@ -52,25 +43,29 @@ body {
   text-align: left;
 }
 
-div .login-signup {
+div .brew-card {
   background-color: rgb(58, 71, 80);
   width: 30em;
   margin: 10em auto 0 auto;
 }
 
-.login-signup form input {
+.brew-card form input {
   outline: none;
   font-size: 1.10em;
   padding-left: .40em;
   border-radius: 0.50em;
 }
 
-.login-signup button {
+.brew-card button {
   width: 10em;
 }
 
-.login-signup img {
+.brew-card img {
   margin: 0 -2em 1em -2em;
+}
+
+#update .brew-card {
+  width: 40em;
 }
 
 #nav-logo {

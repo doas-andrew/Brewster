@@ -63,7 +63,6 @@ class Home extends Component {
 						<option value="porter">Porter</option>
 						<option value="stout">Stout</option>
 						<option value="lager">Lager</option>
-						<option value="special">Special</option>
 					</select>
 
 					<br/><br/>
