@@ -1,0 +1,68 @@
+#review-showcase {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#review-showcase {
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 650px;
+  height: 650px;
+}
+
+.review-card {
+  width: 200px;
+  height: 200px;
+  margin: 5px;
+  transition: transform 1s;
+  transform-style: preserve-3d;
+}
+
+.review-card:hover {
+  transform: scale(1.05)
+}
+
+.review-card:active {
+  transform: rotateY(180deg) scale(1.05);
+}
+
+
+
+.card-front, .card-back {
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  backface-visibility: hidden;
+  background-size: cover;
+}
+
+.card-front {
+  background-image: url("../assets/cork-wallet.png");
+  transition-duration: 1s;
+  box-shadow: 5px 5px 10px;
+  box-shadow: 5px 5px 10px rgb(55, 55, 55, 0.85);
+  
+}
+
+.card-back {
+  background-image: url("../assets/cork-wallet.png");
+  transform: rotateY(180deg);
+  box-shadow: 5px 5px 10px rgb(55, 55, 55, 0.85);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.review-pics {
+  width: 50%;
+  height: 5em;
+}
+
+.zero {
+  background: url("../assets/stars/stars.png") 0 0;
+  width: 148px;
+  height: 33px;
+}

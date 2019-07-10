@@ -1,5 +1,8 @@
 import React, { Component, Fragment } from 'react'
 import { FaHeart, FaEdit, FaChevronCircleLeft } from 'react-icons/fa'
+import ReviewCard from './ReviewCard'
+import '../stylesheets/Review.css'
+
 
 const loggedIn = !!localStorage.getItem('brewster_token')
 
@@ -8,6 +11,7 @@ class BeerSpecs extends Component {
 	state = {
 		beer: this.props.beer,
 		rev: false,
+		headline: '',
 		review: '',
 		rating: 1
 	}
@@ -37,8 +41,12 @@ class BeerSpecs extends Component {
 	}
 
 	handleRev = () => {
-		console.log('i have been touched!')
 		this.setState({ rev: !this.state.rev })
+	}
+
+	handleHeadChange = (e) => {
+		let input = e.target.value
+		this.setState({ headline: input })
 	}
 
 	checkFav = () => {
@@ -60,7 +68,7 @@ class BeerSpecs extends Component {
 		method: 'POST',
 		headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
 		body: JSON.stringify({
-			title: this.state.beer.name,
+			title: this.state.headline,
 			content: this.state.review,
 			rating: this.state.rating,
 			user_id: localStorage.getItem('brewster_id'),
@@ -84,7 +92,7 @@ class BeerSpecs extends Component {
 						<strong>Bitterness (IBU)</strong><br/>
 						<strong>Acidity (Ph)</strong><br/>
 						<br/>
-						<span id='heart' style={{ color: this.checkFav() ? 'red' : 'black' }} onClick={ ()=> loggedIn ? this.handleFav() : null }><FaHeart/> </span>{this.state.beer.favorites.length} &nbsp; &nbsp; <span id='reviews'><FaEdit/></span> {this.state.beer.reviews.length}
+						<span id='heart' style={{ color: this.checkFav() ? 'red' : 'black' }} onClick={ ()=> loggedIn ? this.handleFav() : null }><FaHeart/> </span>{this.state.beer.favorites.length} &nbsp; &nbsp; <span id='reviews' onClick={this.handleRev} ><FaEdit/></span> {this.state.beer.reviews.length}
 						<br/><br/>
 						<span id="close-showBeer" onClick={this.props.closeBeerSpecs}><FaChevronCircleLeft />&nbsp; Back</span>
 					</div>
@@ -99,6 +107,10 @@ class BeerSpecs extends Component {
 					</div>
 					{this.state.rev ? <form id='showBeer-review' onSubmit={this.handleSubmit}>
 					<strong>Leave a Review!</strong><br/>
+					<label>Headline:</label><br/>
+					<input value={this.state.headline} onChange={this.handleHeadChange}></input>
+					<br/>
+					<label>Content:</label><br/>
 					<textarea id='showBeer-review-input' rows='5' cols='20' placeholder='Type in your review...' onChange={this.handleChange}></textarea><br/>
 					<label>Rating: </label>
 					<select value={this.state.rating} onChange={this.handleRatingChange}>
@@ -114,9 +126,9 @@ class BeerSpecs extends Component {
 				<div>
 				{	this.state.beer.reviews[0] ?  <> <hr/>
 					<h4>Reviews</h4>
-					<ul>
-						{ this.state.beer.reviews.map(review => <li>{review.content}<button>X</button></li>)}
-					</ul>		</>	: null
+					<div id='review-showcase'>
+						{ this.state.beer.reviews.map(review => <ReviewCard review={review} />)}
+					</div>		</>	: null
 				}
 				</div>
 				
