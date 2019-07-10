@@ -1,7 +1,7 @@
 import React, { Component, Fragment } from 'react'
 import BeerSpecs from './BeerSpecs'
 
-import { FaTrashAlt } from 'react-icons/fa';
+import { FaTrashAlt, FaStar } from 'react-icons/fa';
 import '../stylesheets/BeerShelf.css';
 
 
@@ -101,13 +101,21 @@ class BeerShelf extends Component {
 				{
 					this.state.showBeer.reviews.map(review => 
 						<li>
-							{console.log(review, review.user_id, user_id)}
 							{ review.user.id == user_id ? <FaTrashAlt onClick={ e => this.deleteReview(review.id)} className="trashcan"/> : null } &nbsp; &nbsp;
-							{ review.author } wrote: &nbsp; "{ review.content }" - Rating: {review.rating}/5 
+							{ review.author } wrote: &nbsp; "{ review.content }" &nbsp; <span className="stars">{ this.getStars(review.rating) }</span>
 						</li>) 
 				}
 			</ul>
 		</div>
+
+	getStars = (num)=> {
+		let starArray = []
+		
+		for(let k=0; k<num; k++)
+			starArray.push( <FaStar/> )
+
+		return starArray
+	}
 
 	render() {
 		return (

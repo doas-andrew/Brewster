@@ -19,3 +19,7 @@
   grid-template-columns: repeat(50, 15em);
   overflow-x: scroll;
 }
+
+.stars {
+	color: gold;
+}
