@@ -25,31 +25,25 @@ class RenderNavbar extends Component {
         {this.state.redirect}
 
         <LinkContainer to='/'><h3 id="nav-logo"><FaAngleLeft/>Brewster <FaBeer/><FaAngleRight/></h3></LinkContainer>
-        <span>&nbsp; &nbsp; &nbsp;</span>
+        &nbsp; &nbsp; &nbsp;
         <Nav className="mr-auto">
           <LinkContainer to='/about-us'><Nav.Link>About Us</Nav.Link></LinkContainer>
-          <span>&nbsp; &nbsp; &nbsp;</span>
+          &nbsp; &nbsp; &nbsp;
           {
             loggedIn ?
               <Fragment>
                 <LinkContainer to={'/profile/'+user_id}><Nav.Link>Profile</Nav.Link></LinkContainer>
-                <span>&nbsp; &nbsp; &nbsp;</span>
+                &nbsp; &nbsp; &nbsp;
                 <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
               </Fragment>
               :
               <Fragment>
                 <LinkContainer to='/login'><Nav.Link>Login</Nav.Link></LinkContainer>
-                <span>&nbsp; &nbsp; &nbsp;</span>
+                &nbsp; &nbsp; &nbsp;
                 <LinkContainer to='/sign-up'><Nav.Link>Sign Up</Nav.Link></LinkContainer>
               </Fragment>
           }
         </Nav>
-
-        <Form inline onSubmit={console.log} >
-          <FormControl name="search" type="text" placeholder=" Search Beer / Users" className="mr-sm-2" />
-          <Button type="submit" variant="outline-info"><FaSearch/></Button>
-        </Form>
-        <span>&nbsp; &nbsp; &nbsp;</span>
       </Navbar>
     )
   }
