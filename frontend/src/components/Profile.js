@@ -52,14 +52,16 @@ class Profile extends Component {
 	}
 
 	getBeers = ()=> {
-		console.log(this.state.user)
-		if(this.state.showReviewedBeers)
-			return this.state.user.reviews(review => review.beer)
+		if(this.state.showReviewedBeers) {
+			let reviewed_beer_ids = this.state.user.reviews.map( review => review.beer_id )
+			return this.state.user.favorite_beers.filter(beer => reviewed_beer_ids.includes(beer.id))
+		}
 		else
 			return this.state.user.favorite_beers
 	}
 
 	render() {
+		console.log(this.state.user)
 		if(this.state.user.id === undefined)
 			return null
 

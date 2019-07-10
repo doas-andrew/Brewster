@@ -6,8 +6,7 @@ import { LinkContainer } from 'react-router-bootstrap';
 import { FaAngleLeft, FaBeer, FaAngleRight, FaSearch } from 'react-icons/fa';
 
 
-const loggedIn = !!localStorage.getItem('brewster_token')
-const user_id = localStorage.getItem('brewster_id')
+const user_id = ()=> localStorage.getItem('brewster_id')
 
 class RenderNavbar extends Component {
 
@@ -17,6 +16,7 @@ class RenderNavbar extends Component {
     localStorage.removeItem('brewster_token')
     localStorage.removeItem('brewster_id')
     this.setState({ redirect: <Redirect to='/login' /> })
+    this.props.logUser(false)
   }
 
   render() {
@@ -30,9 +30,9 @@ class RenderNavbar extends Component {
           <LinkContainer to='/about-us'><Nav.Link>About Us</Nav.Link></LinkContainer>
           &nbsp; &nbsp; &nbsp;
           {
-            loggedIn ?
+            this.props.loggedIn ?
               <Fragment>
-                <LinkContainer to={'/profile/'+user_id}><Nav.Link>Profile</Nav.Link></LinkContainer>
+                <LinkContainer to={'/profile/'+user_id()}><Nav.Link>Profile</Nav.Link></LinkContainer>
                 &nbsp; &nbsp; &nbsp;
                 <Nav.Link onClick={this.handleLogout}>Logout</Nav.Link>
               </Fragment>
