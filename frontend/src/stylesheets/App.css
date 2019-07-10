@@ -1,8 +1,7 @@
 body {
-    background: url(../images/home2.jpeg) no-repeat center center fixed;
-    background-size: cover;
-    height: 100%;
-    overflow: visible;
+  background: url(../images/home2.jpeg) no-repeat center center fixed;
+  background-size: cover;
+  overflow: visible;
 }
 
 .App {
