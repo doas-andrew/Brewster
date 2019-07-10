@@ -13,6 +13,7 @@
 }
 
 #avatar-container {
+  padding:1em;
   width: 20em;
   height: 20em;
 }
