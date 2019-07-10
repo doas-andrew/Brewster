@@ -1,6 +1,6 @@
 #reviews-container {
 	border: 2px solid black;
-	height: 45vh;
+	height: 40vh;
 	width: 100%;
 	overflow: auto;
 	border-radius: 16px;

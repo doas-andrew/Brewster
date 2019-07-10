@@ -7,7 +7,7 @@
 }
 
 #profile .row .col-4 {
-  margin-right: 8em;
+  margin-right: 6em;
 }
 
 #user-card button {
@@ -18,8 +18,8 @@
 
 #avatar-container {
   border: 3px solid black;
-  width: 35vh;
-  height: 35vh;
+  width: 40vh;
+  height: 40vh;
   background-size: cover;
 }
 #avatar-container img {

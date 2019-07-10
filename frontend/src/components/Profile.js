@@ -69,8 +69,10 @@ class Profile extends Component {
 
 			  	<div className="col">
 			  		<ReviewsContainer title={"Reviews by "+this.state.user.name} reviews={this.state.user.reviews} />
+					</div>
 				</div>
-			</div>
+
+				<br/><br/>
 
 				<BeerShelf beers={this.state.user.favorite_beers} title={this.state.user.username+"'s Favorites"} />
 			</div>
