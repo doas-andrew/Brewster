@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { FaHeart, FaEdit, FaChevronCircleLeft } from 'react-icons/fa'
 
 const loggedIn = !!localStorage.getItem('brewster_token')
@@ -6,7 +6,10 @@ const loggedIn = !!localStorage.getItem('brewster_token')
 class BeerSpecs extends Component {
 
 	state = {
-		beer: this.props.beer
+		beer: this.props.beer,
+		rev: false,
+		review: '',
+		rating: 1
 	}
 
 	fetchBeerState = ()=> {
@@ -33,9 +36,45 @@ class BeerSpecs extends Component {
 		.then(res => this.fetchBeerState() )
 	}
 
+	handleRev = () => {
+		console.log('i have been touched!')
+		this.setState({ rev: !this.state.rev })
+	}
+
 	checkFav = () => {
 		return !!this.state.beer.favorites.find(fav => fav.user_id == localStorage.getItem('brewster_id'))
 	}
+	handleChange = (e) => {
+		let input = e.target.value
+		this.setState({ review: input})
+	}
+
+	handleRatingChange = (e) => {
+		let input = e.target.value
+		this.setState({ rating: input })
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault()
+		fetch('http://localhost:3000/reviews',{
+		method: 'POST',
+		headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
+		body: JSON.stringify({
+			title: this.state.beer.name,
+			content: this.state.review,
+			rating: this.state.rating,
+			user_id: localStorage.getItem('brewster_id'),
+			beer_id: this.state.beer.id
+		})
+	})
+	.then(e.target.reset())
+	.then(e => this.setState({ rev: !this.state.rev}))
+	.then(fetch('http://localhost:3000/beers/' + this.state.beer.id)
+	.then(res => res.json())
+	.then(res => this.setState({ beer: res }))
+	)
+	}
+
 	render() {
 		return (
 			<div id="showBeer">
@@ -47,7 +86,7 @@ class BeerSpecs extends Component {
 						<strong>Bitterness (IBU)</strong><br/>
 						<strong>Acidity (Ph)</strong><br/>
 						<br/>
-						<span id='heart' style={{ color: this.checkFav() ? 'red' : 'black' }} onClick={ ()=> loggedIn ? this.handleFav() : null }><FaHeart/> </span>{this.state.beer.favorites.length} &nbsp; &nbsp; <span id='rev'><FaEdit/></span> {this.state.beer.reviews.length}
+						<span id='heart' style={{ color: this.checkFav() ? 'red' : 'black' }} onClick={ ()=> loggedIn ? this.handleFav() : null }><FaHeart/> </span>{this.state.beer.favorites.length} &nbsp; &nbsp; <span id='rev' onClick={ ()=> loggedIn ? this.handleRev() : null }><FaEdit/></span> {this.state.beer.reviews.length}
 					</div>
 
 					<div className="col">
@@ -59,8 +98,30 @@ class BeerSpecs extends Component {
 						<strong>{this.state.beer.ibu}</strong><br/>
 						<strong>{this.state.beer.ph}</strong><br/>
 					</div>
+					{this.state.rev ? <form id='showBeer-review' onSubmit={this.handleSubmit}>
+					<strong>Leave a Review!</strong><br/>
+					<textarea id='showBeer-review-input' rows='5' cols='20' placeholder='Type in your review...' onChange={this.handleChange}></textarea><br/>
+					<label>Rating: </label>
+					<select value={this.state.rating} onChange={this.handleRatingChange}>
+					<option value = '1'>1</option>
+					<option value = '2'>2</option>
+					<option value = '3'>3</option>
+					<option value = '4'>4</option>
+					<option value = '5'>5</option>
+					</select><br/>
+					<button type='Submit'>Submit!</button>
+					</form> : null }
 				</div>
-			</div>
+				<div>
+				{	this.state.beer.reviews[0] ?  <> <hr/>
+					<h4>Reviews</h4>
+					<ul>
+						{ this.state.beer.reviews.map(review => <li>{review.content}<button>X</button></li>)}
+					</ul>		</>	: null
+				}
+				</div>
+				
+			</div>	
 		)
 	}
 }
