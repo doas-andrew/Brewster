@@ -35,7 +35,7 @@ class BeerSpecs extends Component {
 			<div id="showBeer">
 				<div className="row">
 
-					<div id="showBeer-labels" className="col-5">
+					<div id="showBeer-labels" className="col-4">
 						<strong>Alcohol Content (ABV)</strong><br/>
 						<strong>Bitterness (IBU)</strong><br/>
 						<strong>Acidity (Ph)</strong>
@@ -61,17 +61,17 @@ class BeerSpecs extends Component {
 						<span id="close-showBeer" onClick={this.props.closeBeerSpecs}><FaChevronCircleLeft />&nbsp; Back</span>
 					</div>
 
-					<div className="col item" style={{ backgroundImage: `url(${this.props.beer.image_url})` }} ></div>
+					<div className="col-1 item" style={{ backgroundImage: `url(${this.props.beer.image_url})` }} ></div>
 
-					<div id="showBeer-values" className="col-5">
+					<div id="showBeer-values" className="col-4">
 						<div className="row">
-							<div className="col-3">
+							<div className="col">
 								<strong>{this.props.beer.abv}</strong><br/>
 								<strong>{this.props.beer.ibu}</strong><br/>
 								<strong>{this.props.beer.ph}</strong><br/>
 							</div>
 
-							<div className="col">
+							<div className="col-7">
 								{ loggedIn && this.state.showReviewForm ? this.renderReviewForm() : null }
 							</div>
 						</div>
