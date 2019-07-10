@@ -52,14 +52,16 @@ class Profile extends Component {
 	}
 
 	getBeers = ()=> {
-		console.log(this.state.user)
-		if(this.state.showReviewedBeers)
-			return this.state.user.reviews(review => review.beer)
+		if(this.state.showReviewedBeers) {
+			let reviewed_beer_ids = this.state.user.reviews.map( review => review.beer_id )
+			return this.state.user.favorite_beers.filter(beer => reviewed_beer_ids.includes(beer.id))
+		}
 		else
 			return this.state.user.favorite_beers
 	}
 
 	render() {
+		console.log(this.state.user)
 		if(this.state.user.id === undefined)
 			return null
 
@@ -72,7 +74,7 @@ class Profile extends Component {
 			  	<div id="user-card" className="col-4">
 			  		<div id="avatar-container">
 				  		{ this.user_id === this.state.user.id ? <FaCogs id="edit-profile-btn" onClick={()=> this.setState({ redirect: <Redirect to='/edit-profile' /> }) } /> : null }
-				  		<img src={this.state.user.avatar ? require(this.state.user.avatar) : default_avatar } alt="avatar" />
+				  		<img src={this.state.user.avatar ? this.state.user.avatar : default_avatar } alt="avatar" />
 				  	</div>
 				  	{this.renderProfileButtons()}
 			  	</div>

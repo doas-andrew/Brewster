@@ -27,9 +27,10 @@ class SignUp extends Component {
 		  .then(res => res.json())
 		  .then(res => {
 		  	if(res.token) {
-		  		localStorage.setItem('brewster_token')
-		  		localStorage.setItem('brewster_id', res.user.id)
-		  		this.setState({ redirect: <Redirect to='/'/> })
+		  		localStorage.setItem('brewster_token', res.token)
+		  		localStorage.setItem('brewster_id', res.user_id)
+		  		this.setState({ redirect: <Redirect to='/' /> })
+		  		this.props.logUser(true)
 		  	}
 		  	else if(res.errors)
 		  		this.setState({ errors: res.errors })

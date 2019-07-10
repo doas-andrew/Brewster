@@ -27,7 +27,7 @@ class Login extends Component {
 		  		localStorage.setItem('brewster_token', res.token)
 		  		localStorage.setItem('brewster_id', res.user_id)
 		  		this.setState({ redirect: <Redirect to='/' /> })
-		  		this.forceUpdate()
+		  		this.props.logUser(true)
 		  	}
 		  	else if(res.errors)
 		  		this.setState({ errors: res.errors })

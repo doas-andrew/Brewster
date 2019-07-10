@@ -83,6 +83,7 @@ class BeerShelf extends Component {
 	}
 	
 	renderBeers = ()=> {
+		console.log(this.props.beers)
 		return (
 			<div className="beer-scroll-grid">
 				{this.props.beers.map( beer =>
@@ -101,7 +102,7 @@ class BeerShelf extends Component {
 				{
 					this.state.showBeer.reviews.map(review => 
 						<li>
-							{ review.user.id == user_id ? <FaTrashAlt onClick={ e => this.deleteReview(review.id)} className="trashcan"/> : null } &nbsp; &nbsp;
+							{ review.user_id == user_id ? <FaTrashAlt onClick={ e => this.deleteReview(review.id)} className="trashcan"/> : null } &nbsp; &nbsp;
 							{ review.author } wrote: &nbsp; "{ review.content }" &nbsp; <span className="stars">{ this.getStars(review.rating) }</span>
 						</li>) 
 				}

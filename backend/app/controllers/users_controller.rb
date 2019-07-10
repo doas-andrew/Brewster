@@ -13,7 +13,7 @@ class UsersController < ApplicationController
 		@user = User.new(new_user_params)
 		if(@user.save)
 			#generate token and login
-			render json: { user: @user }
+    	render json: { token: 'success', user_id: @user.id }, status: :ok
 		else
 			render json: { errors: @user.errors.full_messages }
 		end
