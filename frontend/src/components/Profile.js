@@ -35,8 +35,8 @@ class Profile extends Component {
 		if(this.user_id === this.state.user.id)
 			return (
 				<Fragment>
-		  		{/* <Button variant="secondary">Edit your Favorites &nbsp; <FaBeer/></Button>
-		  		<Button variant="secondary">something to do with Reviews &nbsp; <FaEdit/></Button> */}
+		  		<Button variant="secondary">Edit your Favorites &nbsp; <FaBeer/></Button>
+		  		<Button variant="secondary">something to do with Reviews &nbsp; <FaEdit/></Button>
 		  	</Fragment>
   		)
 		if(this.user_id) {

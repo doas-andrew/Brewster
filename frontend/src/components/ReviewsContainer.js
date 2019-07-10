@@ -9,6 +9,7 @@ class ReviewsContainer extends Component {
 		<Card bg="secondary" className="review-card">
 			<h5>{review.title}</h5>
 			<p>{review.content}</p>
+			<p>Rating: {review.rating}</p>
 		</Card>
 	)
 
