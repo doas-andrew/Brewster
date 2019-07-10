@@ -16,6 +16,8 @@ class ReviewsContainer extends Component {
 	render() {
 		return (
 			<div id="reviews-container" className="" >
+				<br/>
+				<h3>{this.props.title}</h3>
 				{ this.renderReviews() }
 			</div>
 		)

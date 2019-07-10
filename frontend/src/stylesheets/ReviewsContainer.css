@@ -1,10 +1,10 @@
 #reviews-container {
-	margin: 2em;
 	border: 2px solid black;
-	height: 22.2em;
+	height: 45vh;
 	width: 100%;
 	overflow: auto;
 	border-radius: 16px;
+	background-color: white;
 }
 
 .review-card {

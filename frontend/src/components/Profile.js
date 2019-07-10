@@ -67,11 +67,10 @@ class Profile extends Component {
 				  	{this.renderProfileButtons()}
 			  	</div>
 
-			  	<div className="col" style={{ backgroundColor: '' }}>
-			  		<h3>Reviews by {this.state.user.name}</h3>
-			  		<ReviewsContainer reviews={this.state.user.reviews} />
-					</div>
+			  	<div className="col">
+			  		<ReviewsContainer title={"Reviews by "+this.state.user.name} reviews={this.state.user.reviews} />
 				</div>
+			</div>
 
 				<BeerShelf beers={this.state.user.favorite_beers} title={this.state.user.username+"'s Favorites"} />
 			</div>
