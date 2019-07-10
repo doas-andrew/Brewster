@@ -75,12 +75,8 @@ div .brew-card {
 
 .page {
   z-index: -1;
-  position:absolute;
-  left:0;
-  right:0;
-  bottom: 0;
-  top: 0;
+  padding-top: 5vh;
   margin: auto;
   width: 70%;
-  background: white;
+  background: rgba(255, 255, 255, 90%);
 }

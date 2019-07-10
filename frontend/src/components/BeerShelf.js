@@ -103,7 +103,7 @@ class BeerShelf extends Component {
 						<li>
 							{console.log(review, review.user_id, user_id)}
 							{ review.user.id == user_id ? <FaTrashAlt onClick={ e => this.deleteReview(review.id)} className="trashcan"/> : null } &nbsp; &nbsp;
-							{ review.author } wrote: &nbsp; { review.content }
+							{ review.author } wrote: &nbsp; "{ review.content }" - Rating: {review.rating}/5 
 						</li>) 
 				}
 			</ul>
