@@ -3,7 +3,14 @@ import { Navbar, Nav, Button, Form, FormControl } from 'react-bootstrap';
 import { LinkContainer } from 'react-router-bootstrap';
 import { FaAngleLeft, FaBeer, FaAngleRight, FaSearch } from 'react-icons/fa';
 
+
+const loggedIn = !!localStorage.getItem('brewster_token')
 const user_id = localStorage.getItem('brewster_id')
+
+const handleLogout = ()=> {
+  localStorage.removeItem('brewster_token')
+  localStorage.removeItem('brewster_id')
+}
 
 const RenderNavbar = (props)=> {
   return (
@@ -14,11 +21,11 @@ const RenderNavbar = (props)=> {
         <LinkContainer to='/about-us'><Nav.Link>About Us</Nav.Link></LinkContainer>
         <span>&nbsp; &nbsp; &nbsp;</span>
         {
-          props.loggedIn ?
+          loggedIn ?
             <Fragment>
               <LinkContainer to={'/profile/'+user_id}><Nav.Link>Profile</Nav.Link></LinkContainer>
               <span>&nbsp; &nbsp; &nbsp;</span>
-              <Nav.Link onClick={props.changeLoggedIn}>Logout</Nav.Link>
+              <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
             </Fragment>
             :
             <Fragment>

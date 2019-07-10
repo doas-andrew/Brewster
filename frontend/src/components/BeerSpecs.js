@@ -78,22 +78,21 @@ class BeerSpecs extends Component {
 	render() {
 		return (
 			<div id="showBeer">
-				<span id="close-showBeer" onClick={this.props.closeBeerSpecs}><FaChevronCircleLeft /></span>
-				<br/>
 				<div className="row">
-					<div id="showBeer-labels" className="col">
-						<strong>Alcohol % (ABV)</strong><br/>
+					<div id="showBeer-labels" className="col-5">
+						<strong>Alcohol Content (ABV)</strong><br/>
 						<strong>Bitterness (IBU)</strong><br/>
 						<strong>Acidity (Ph)</strong><br/>
 						<br/>
-						<span id='heart' style={{ color: this.checkFav() ? 'red' : 'black' }} onClick={ ()=> loggedIn ? this.handleFav() : null }><FaHeart/> </span>{this.state.beer.favorites.length} &nbsp; &nbsp; <span id='rev' onClick={ ()=> loggedIn ? this.handleRev() : null }><FaEdit/></span> {this.state.beer.reviews.length}
+						<span id='heart' style={{ color: this.checkFav() ? 'red' : 'black' }} onClick={ ()=> loggedIn ? this.handleFav() : null }><FaHeart/> </span>{this.state.beer.favorites.length} &nbsp; &nbsp; <span id='reviews'><FaEdit/></span> {this.state.beer.reviews.length}
+						<br/><br/>
+						<span id="close-showBeer" onClick={this.props.closeBeerSpecs}><FaChevronCircleLeft />&nbsp; Back</span>
 					</div>
 
-					<div className="col">
-						<img src={this.state.beer.image_url} />
+					<div className="col item" style={{ backgroundImage: `url(${this.state.beer.image_url})` }} >
 					</div>
 
-					<div id="showBeer-values" className="col">
+					<div id="showBeer-values" className="col-5">
 						<strong>{this.state.beer.abv}</strong><br/>
 						<strong>{this.state.beer.ibu}</strong><br/>
 						<strong>{this.state.beer.ph}</strong><br/>
