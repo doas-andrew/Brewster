@@ -50,7 +50,7 @@ class BeerShelf extends Component {
 
 	render() {
 		return (
-			<div className="beer-shelf">
+			<div className="beer-shelf" style={{ height: this.state.showBeer ? 'auto' : "420px", paddingBottom: this.state.showBeer ? '1em' : "0" }}>
 				<h3>{this.state.title}</h3>
 				<hr/>
 				{
