@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import { FaHeart, FaEdit, FaChevronCircleLeft } from 'react-icons/fa'
+import { Button } from 'react-bootstrap'
 
 const loggedIn = !!localStorage.getItem('brewster_token')
 
@@ -49,20 +50,16 @@ class BeerSpecs extends Component {
 		this.setState({ review: input})
 	}
 
-	handleRatingChange = (e) => {
-		let input = e.target.value
-		this.setState({ rating: input })
-	}
-
 	handleSubmit = (e) => {
 		e.preventDefault()
+		let form = e.target
 		fetch('http://localhost:3000/reviews',{
 		method: 'POST',
 		headers: {Accept: 'application/json', 'Content-Type': 'application/json'},
 		body: JSON.stringify({
 			title: this.state.beer.name,
-			content: this.state.review,
-			rating: this.state.rating,
+			content: form.content.value,
+			rating: form.rating.value,
 			user_id: localStorage.getItem('brewster_id'),
 			beer_id: this.state.beer.id
 		})
@@ -75,52 +72,75 @@ class BeerSpecs extends Component {
 	)
 	}
 
+	renderReviewForm = ()=>
+		<form id='showBeer-review' onSubmit={this.handleSubmit}>
+			<strong>Leave a Review!</strong>
+			<textarea id='showBeer-review-input' rows='5' cols='25' onChange={this.handleChange} name="content" placeholder=' Type your review here'></textarea>
+			<br/>
+			&nbsp; &nbsp; <strong>Rating </strong> &nbsp;
+			<select name="rating">
+				<option value='1'>1</option>
+				<option value='2'>2</option>
+				<option value='3'>3</option>
+				<option value='4'>4</option>
+				<option value='5'>5</option>
+			</select>
+			&nbsp; &nbsp; &nbsp;
+			<Button type='submit' variant="secondary">Submit</Button>
+		</form>
+
+	renderReviewList = ()=>
+		<div>
+			<hr/>
+			<h4>Reviews</h4>
+			<ul>
+				{ this.state.beer.reviews.map(review => <li>{review.content}<button>X</button></li>) }
+			</ul>
+		</div>
+
 	render() {
 		return (
 			<div id="showBeer">
 				<div className="row">
+
 					<div id="showBeer-labels" className="col-5">
 						<strong>Alcohol Content (ABV)</strong><br/>
 						<strong>Bitterness (IBU)</strong><br/>
-						<strong>Acidity (Ph)</strong><br/>
-						<br/>
-						<span id='heart' style={{ color: this.checkFav() ? 'red' : 'black' }} onClick={ ()=> loggedIn ? this.handleFav() : null }><FaHeart/> </span>{this.state.beer.favorites.length} &nbsp; &nbsp; <span id='reviews'><FaEdit/></span> {this.state.beer.reviews.length}
+						<strong>Acidity (Ph)</strong>
+
 						<br/><br/>
+
+						<span id='heart' style={{ color: this.checkFav() ? 'red' : 'grey' }} onClick={ ()=> loggedIn ? this.handleFav() : null }>
+							<FaHeart/>
+						</span> {this.state.beer.favorites.length}
+						&nbsp; &nbsp; &nbsp;
+						<span id='reviews' style={{ color: this.state.rev ? 'DodgerBlue' : 'grey' }} onClick={ e => loggedIn ? this.setState({ rev: !this.state.rev }) : null }>
+							<FaEdit/>
+						</span> {this.state.beer.reviews.length}
+						
+						<br/><br/>
+
 						<span id="close-showBeer" onClick={this.props.closeBeerSpecs}><FaChevronCircleLeft />&nbsp; Back</span>
 					</div>
 
-					<div className="col item" style={{ backgroundImage: `url(${this.state.beer.image_url})` }} >
-					</div>
+					<div className="col item" style={{ backgroundImage: `url(${this.state.beer.image_url})` }} ></div>
 
 					<div id="showBeer-values" className="col-5">
-						<strong>{this.state.beer.abv}</strong><br/>
-						<strong>{this.state.beer.ibu}</strong><br/>
-						<strong>{this.state.beer.ph}</strong><br/>
+						<div className="row">
+							<div className="col-3">
+								<strong>{this.state.beer.abv}</strong><br/>
+								<strong>{this.state.beer.ibu}</strong><br/>
+								<strong>{this.state.beer.ph}</strong><br/>
+							</div>
+
+							<div className="col">
+								{ this.state.rev && loggedIn ? this.renderReviewForm() : null }
+							</div>
+						</div>
 					</div>
-					{this.state.rev ? <form id='showBeer-review' onSubmit={this.handleSubmit}>
-					<strong>Leave a Review!</strong><br/>
-					<textarea id='showBeer-review-input' rows='5' cols='20' placeholder='Type in your review...' onChange={this.handleChange}></textarea><br/>
-					<label>Rating: </label>
-					<select value={this.state.rating} onChange={this.handleRatingChange}>
-					<option value = '1'>1</option>
-					<option value = '2'>2</option>
-					<option value = '3'>3</option>
-					<option value = '4'>4</option>
-					<option value = '5'>5</option>
-					</select><br/>
-					<button type='Submit'>Submit!</button>
-					</form> : null }
 				</div>
-				<div>
-				{	this.state.beer.reviews[0] ?  <> <hr/>
-					<h4>Reviews</h4>
-					<ul>
-						{ this.state.beer.reviews.map(review => <li>{review.content}<button>X</button></li>)}
-					</ul>		</>	: null
-				}
-				</div>
-				
-			</div>	
+					{ this.state.beer.reviews[0] ? this.renderReviewList() : null }
+			</div>
 		)
 	}
 }

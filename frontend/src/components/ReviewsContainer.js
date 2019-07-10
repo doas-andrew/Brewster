@@ -16,24 +16,6 @@ class ReviewsContainer extends Component {
 		return (
 			<div id="reviews-container" className="" >
 				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
-				{ this.renderReviews() }
 			</div>
 		)
 	}
