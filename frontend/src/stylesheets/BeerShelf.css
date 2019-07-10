@@ -64,3 +64,12 @@
   text-align: left;
   margin-top: 2em;
 }
+#showBeer-review {
+  margin-right: -1.2em;
+  padding: 1em;
+  border-top: 2px solid black;
+  border-left: 2px solid black;
+  border-bottom: 2px solid black;
+  border-radius: 16px;
+
+}
