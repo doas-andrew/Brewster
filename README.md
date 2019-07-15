@@ -1,12 +1,10 @@
 # Brewster
 
+   Brewster is an application for finding new beers, seeing each beer's detailed information, and keeping track of all your favorites! Users can leave reviews on each beer so that others can make good decisions about which beers to try and share opinions! We have designed this application with React, a Javascript framework, a Ruby on Rails backend, and finally HTML and CSS.
+
+ Designed by: Andrew Allen, Romy Maghsoudi, and Will Jones. 
+ 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
-
-
-    Brewster is an application for finding new beers, seeing each beer's detailed information, and keeping track of all your favorites! Users can leave reviews on each beer so that others can make good decisions about which beers to try and share opinions! We have designed this application with React, a Javascript framework, a Ruby on Rails backend, and finally HTML and CSS.
-
-
-    Designed by: Andrew Allen, Romy Maghsoudi, and Will Jones. 
 
 ## Available Scripts
 
