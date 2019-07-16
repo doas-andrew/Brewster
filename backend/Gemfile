@@ -10,6 +10,7 @@ gem 'rest-client'
 # used to specify allowed origins for CORS 
 gem 'rack-cors'
 gem 'faker'
+gem 'carrierwave', '>= 2.0.0.rc', '< 3.0'
 # generates tokens
 gem 'jwt'
 gem 'active_model_serializers'

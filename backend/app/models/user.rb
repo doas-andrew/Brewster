@@ -1,4 +1,5 @@
 class User < ApplicationRecord  
+  mount_uploader :avatar, AvatarUploader
 	has_many :favorites
 	has_many :reviews
 	has_many :beers, through: :favorites
